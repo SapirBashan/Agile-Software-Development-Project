@@ -1,4 +1,10 @@
 package geometries;
+import primitives.Vector;
+import primitives.Point;
 
-public class Geometry {
+
+
+public interface Geometry {
+    public Vector getNormal(Point p);
+
 }
