@@ -95,7 +95,6 @@ public class Vector extends Point {
     public double lengthSquared(){
         return this.dotProduct(this);
     }
-
     /**
      * Computes the length of the vector.
      *
@@ -104,7 +103,6 @@ public class Vector extends Point {
     public double length(){
         return Math.sqrt(this.lengthSquared());
     }
-
     /**
      * Returns a new vector that is the unit vector of this vector.
      *
@@ -117,7 +115,12 @@ public class Vector extends Point {
 
         return new Vector(x, y, z);
     }
-
+    /**
+     * Computes the dot product of this vector with the given vector.
+     *
+     * @param v the vector to compute the dot product with
+     * @return the result of computing the dot product of this vector with the given vector
+     */
     public double dotProduct(Vector v){
         double x = this.xyz.d1 * v.xyz.d1;
         double y = this.xyz.d2 * v.xyz.d2;
