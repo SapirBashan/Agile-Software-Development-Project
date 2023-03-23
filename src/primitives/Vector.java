@@ -38,7 +38,11 @@ public class Vector extends Point {
      */
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if(this == o) return true;
+        if(o instanceof Vector) {
+            return super.equals(o);
+        }
+        return false;
     }
 
     /**
@@ -65,7 +69,6 @@ public class Vector extends Point {
 
     /**
      * Scales the vector by the given scalar value.
-     *
      * @param d the scalar value to scale the vector by
      * @return a new vector that is the result of scaling this vector by the given scalar value
      */
@@ -75,7 +78,6 @@ public class Vector extends Point {
 
     /**
      * Computes the cross product of this vector with the given vector.
-     *
      * @param v the vector to compute the cross product with
      * @return a new vector that is the result of computing the cross product of this vector with the given vector
      */
@@ -89,7 +91,6 @@ public class Vector extends Point {
 
     /**
      * Computes the square of the length of the vector.
-     *
      * @return the square of the length of the vector
      */
     public double lengthSquared(){
@@ -115,9 +116,8 @@ public class Vector extends Point {
 
         return new Vector(x, y, z);
     }
-    /**
+/**
      * Computes the dot product of this vector with the given vector.
-     *
      * @param v the vector to compute the dot product with
      * @return the result of computing the dot product of this vector with the given vector
      */
