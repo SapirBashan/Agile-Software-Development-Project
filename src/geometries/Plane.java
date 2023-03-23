@@ -8,7 +8,6 @@ import primitives.*;
  * perpendicular to the plane.
  */
 public class Plane implements Geometry{
-
     /** The point on the plane. */
     private final Point q0;
 
