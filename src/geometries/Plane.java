@@ -4,8 +4,8 @@ import primitives.*;
 
 public class Plane implements Geometry{
 
-    private Point q0;
-    private Vector normal;
+    final private Point q0;
+    final private Vector normal;
 
     public Point getQ0() {
         return q0;

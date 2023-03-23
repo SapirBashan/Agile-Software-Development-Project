@@ -6,7 +6,7 @@ import primitives.Vector;
 public class Cylinder extends Tube{
 
 
-    private double height;
+    final private double height;
 
     public Cylinder(double radios, double height) {
         super(radios);

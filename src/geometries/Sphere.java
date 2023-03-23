@@ -5,8 +5,8 @@ import primitives.Vector;
 
 public class Sphere extends RadialGeometry{
 
-    private Point center;
-    private double radios;
+    final private Point center;
+    final private double radios;
 
     public Sphere(double radios, Point center, double radios1) {
         super(radios);

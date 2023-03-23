@@ -3,7 +3,7 @@ package primitives;
 import java.util.Objects;
 
 public class Point {
-    protected Double3 xyz;
+    final protected Double3 xyz;
 
     public Point(double x, double y, double z){
         this.xyz = new Double3(x, y, z);
