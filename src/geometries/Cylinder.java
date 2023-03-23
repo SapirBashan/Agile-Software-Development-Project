@@ -1,38 +1,37 @@
 package geometries;
 
 import primitives.Point;
-import primitives.Ray;
 import primitives.Vector;
 
+/**
+ * Represents a cylinder in 3D space.
+ */
 public class Cylinder extends Tube{
+    private double height;
     /**
-     * The height of the cylinder.
+     * Constructs a new Cylinder object with the given radius and height.
+     *
+     * @param radios The radius of the cylinder.
+     * @param height The height of the cylinder.
      */
-    private final double height;
-    /**
-     * Constructs a new Cylinder object with the specified radius, axis ray and height.
-     * @param radius the radius value of the cylinder
-     * @param axisRay the axis ray of the cylinder
-     * @param height the height of the cylinder
-     */
-    public Cylinder(double radius, Ray axisRay, double height) {
-        super(radius, axisRay);
+    public Cylinder(double radios, double height) {
+        super(radios);
         this.height = height;
     }
-
-/**
+    /**
      * Returns the height of the cylinder.
-     * @return the height of the cylinder
+     *
+     * @return The height of the cylinder.
      */
     public double getHeight() {
         return height;
     }
-
-    /**
-     * Returns the normal vector to the cylinder at the specified point.
-     * @param p a point on the cylinder (unused in this implementation)
-     * @return the normal vector to the cylinder
-     */
+  /**
+         * Returns the normal of the cylinder at the specified point.
+         *
+         * @param p The point to calculate the normal at.
+         * @return The normal of the cylinder at the specified point.
+         */
     public Vector getNormal(Point p) {
         return null;
     }
