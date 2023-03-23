@@ -71,7 +71,7 @@ public class Point {
     }
     /**
      * Returns the distance squared of this point and a different given point .
-     * @param p The point to find the distance from this point.
+     * @param p The point to find the distance squared from this point.
      * @return A new Vector object representing the distance squared between this point and the specified point.
      */
     public double distanceSquared(Point p){
@@ -81,7 +81,11 @@ public class Point {
 
         return (dX * dX) + (dY * dY) + (dZ * dZ);
     }
-
+    /**
+     * Returns the distance of this point and a different given point .
+     * @param  p The point to find the distance from this point.
+     * @return The reel distance between p and this point
+     **/
     public double distance(Point p){
         return Math.sqrt(this.distanceSquared(p));
     }

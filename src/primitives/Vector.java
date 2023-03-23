@@ -107,7 +107,10 @@ public class Vector extends Point {
 
         return new Vector(x, y, z);
     }
-
+    /**
+     * @param v the vector to calculate the dot product with this vector.
+     * @return the dot product of the two vectors this and v.
+     */
     public double dotProduct(Vector v){
         double x = this.xyz.d1 * v.xyz.d1;
         double y = this.xyz.d2 * v.xyz.d2;
