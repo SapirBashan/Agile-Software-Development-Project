@@ -1,18 +1,21 @@
 package primitives;
 
 import java.util.Objects;
+
 /**
  * The Ray class represents a ray in 3D space, consisting of an origin point and a direction vector.
  */
 public class Ray {
+
     /**
      * The origin point of the ray.
      */
-    private Point p0;
+    private final Point p0;
+
     /**
      * The direction vector of the ray, normalized to unit length.
      */
-    private  Vector dir;
+    private final Vector dir;
 
     public Point getP0() {
         return p0;
@@ -21,6 +24,7 @@ public class Ray {
     public Vector getDir() {
         return dir;
     }
+
     /**
      * Constructs a new Ray object with the given origin point and direction vector.
      *
@@ -31,6 +35,7 @@ public class Ray {
         this.p0 = p0;
         this.dir = dir.normalize();
     }
+
     /**
      * Checks if this Ray object is equal to another object.
      *
@@ -44,6 +49,7 @@ public class Ray {
         Ray ray = (Ray) o;
         return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
     }
+
     /**
      * Returns a string representation of this ray.
      * @return a string representation of this ray
@@ -55,5 +61,4 @@ public class Ray {
                 ", dir=" + dir +
                 '}';
     }
-
 }

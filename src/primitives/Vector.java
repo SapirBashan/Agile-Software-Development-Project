@@ -4,6 +4,7 @@ package primitives;
  * The Vector class extends the Point class and represents a mathematical vector in three-dimensional space.
  */
 public class Vector extends Point {
+
     /**
      * Constructs a Vector object with the specified x, y, and z components.
      * @param x the x-component of the vector.
@@ -17,6 +18,7 @@ public class Vector extends Point {
             throw new IllegalArgumentException("the vector is ZERO");
         }
     }
+
     /**
      * Constructs a Vector object with the specified Double3 components.
      * @param xyz the components of the vector.
@@ -28,6 +30,7 @@ public class Vector extends Point {
             throw new IllegalArgumentException("the vector is ZERO");
         }
     }
+
     /**
      * Determines whether the specified object is equal to this Vector object.
      * @param o the object to compare with this vector.
@@ -37,6 +40,7 @@ public class Vector extends Point {
     public boolean equals(Object o) {
         return super.equals(o);
     }
+
     /**
      * Returns a string representation of this Vector object.
      *
@@ -48,6 +52,7 @@ public class Vector extends Point {
                 "xyz=" + xyz +
                 '}';
     }
+
     /**
      * Returns a new Vector object that is the result of adding this vector with the specified vector.
      *
@@ -57,6 +62,7 @@ public class Vector extends Point {
     public Vector add(Vector v){
         return new Vector(super.add(v).xyz);
     }
+
     /**
      * Scales the vector by the given scalar value.
      *
@@ -66,6 +72,7 @@ public class Vector extends Point {
     public Vector scale(Double d){
         return new Vector(this.xyz.scale(d));
     }
+
     /**
      * Computes the cross product of this vector with the given vector.
      *
@@ -79,6 +86,7 @@ public class Vector extends Point {
 
         return new Vector(x, y, z);
     }
+
     /**
      * Computes the square of the length of the vector.
      *
@@ -87,6 +95,7 @@ public class Vector extends Point {
     public double lengthSquared(){
         return this.dotProduct(this);
     }
+
     /**
      * Computes the length of the vector.
      *
@@ -95,6 +104,7 @@ public class Vector extends Point {
     public double length(){
         return Math.sqrt(this.lengthSquared());
     }
+
     /**
      * Returns a new vector that is the unit vector of this vector.
      *

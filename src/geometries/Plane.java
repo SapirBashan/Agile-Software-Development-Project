@@ -1,18 +1,19 @@
 package geometries;
-import primitives.Point;
+
 import primitives.*;
+
 /**
  * The Plane class represents a plane in a three-dimensional space.
  * A plane is defined by a point on the plane and a normal vector
  * perpendicular to the plane.
  */
 public class Plane implements Geometry{
+
     /** The point on the plane. */
+    private final Point q0;
 
-    private Point q0;
     /** The normal vector to the plane. */
-
-    private Vector normal;
+    private final Vector normal;
 
     /**
      * Returns the point on the plane.
@@ -32,6 +33,7 @@ public class Plane implements Geometry{
        q0 = p1;
        normal = null;
     }
+
     /**
      * Constructs a plane from a point on the plane and a normal vector to the plane.
      * @param p0 a point on the plane
@@ -41,13 +43,7 @@ public class Plane implements Geometry{
         q0 = p0;
         normal = vNormal.normalize();
     }
-    /**
-     * Returns the normal vector to the plane.
-     * @return the normal vector to the plane
-     */
-    public Vector getNormal() {
-        return normal;
-    }
+
     /**
      * Returns the normal vector to the plane at the specified point.
      * @param p a point on the plane (unused in this implementation)
@@ -56,5 +52,13 @@ public class Plane implements Geometry{
     @Override
     public Vector getNormal(Point p) {
         return null;
+    }
+
+    /**
+     * Returns the normal vector to the plane.
+     * @return the normal vector to the plane
+     */
+    public Vector getNormal() {
+        return normal;
     }
 }

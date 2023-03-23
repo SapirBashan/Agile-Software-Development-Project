@@ -8,15 +8,23 @@ import primitives.Ray;
  * A tube is defined by a center axis ray and a radius value.
  */
 public class Tube extends RadialGeometry {
+
     /** The axis ray of the tube. */
-    protected Ray axisRay;
+    protected final Ray axisRay;
+
     /**
      * Constructs a new Tube object with the specified radius.
      * @param radius the radius value of the tube
      */
-    public Tube(double radios) {
-        super(radios);
+    public Tube(double radius, Ray axisRay) {
+        super(radius);
+        this.axisRay = axisRay;
     }
+
+    public Ray getAxisRay() {
+        return axisRay;
+    }
+
     /**
      * Returns the normal vector to the tube at the specified point.
      * @param p a point on the tube (unused in this implementation)
