@@ -17,7 +17,9 @@ abstract class RadialGeometry implements Geometry{
 
         this.radios = radius;
     }
-
+    /*
+     * Returns the radius value of the geometry.
+     */
     public double getRadios() {
         return radios;
     }
