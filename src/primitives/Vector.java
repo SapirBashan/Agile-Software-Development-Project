@@ -59,7 +59,6 @@ public class Vector extends Point {
 
     /**
      * Returns a new Vector object that is the result of adding this vector with the specified vector.
-     *
      * @param v the vector to add.
      * @return the result of adding this vector with the specified vector.
      */
