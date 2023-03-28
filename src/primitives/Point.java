@@ -81,6 +81,7 @@ public class Point {
 
         return (dX * dX) + (dY * dY) + (dZ * dZ);
     }
+
     /**
      * Returns the distance of this point and a different given point .
      * @param p The point to find the distance from this point.
