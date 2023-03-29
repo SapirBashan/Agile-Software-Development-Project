@@ -38,7 +38,6 @@ public class Ray {
 
     /**
      * Checks if this Ray object is equal to another object.
-     *
      * @param o the object to compare this Ray object to
      * @return true if the objects are equal, false otherwise
      */
