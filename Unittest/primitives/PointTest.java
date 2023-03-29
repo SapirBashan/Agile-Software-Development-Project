@@ -12,6 +12,7 @@ class PointTest {
     public void testAdd() {
         Point p = new Point(1, 2, 3);
 
+
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: two different points

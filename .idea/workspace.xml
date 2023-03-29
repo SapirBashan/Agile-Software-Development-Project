@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1bf3e11-b0d3-462a-9726-e15caa655f84" name="Changes" comment="Ready for Tag1">
-      <change afterPath="$PROJECT_DIR$/lib/aopalliance-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/guava-19.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/guice-4.1.0-no_aop.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.inject-1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jcommander-1.72.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/snakeyaml-1.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/testng-7.1.0.jar" afterDir="false" />
+    <list default="true" id="f1bf3e11-b0d3-462a-9726-e15caa655f84" name="Changes" comment="Fixed the tests of Point and Vector">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5783_3368_0044.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5783_3368_0044.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/primitives/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/primitives/PointTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/primitives/VectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679590120666</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎-00007" summary="Fixed the tests of Point and Vector">
+      <created>1680074499282</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1680074499282</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,6 +253,7 @@
     <MESSAGE value="final commit" />
     <MESSAGE value="final commit for stage 1" />
     <MESSAGE value="testing for point" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing for point" />
+    <MESSAGE value="Fixed the tests of Point and Vector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the tests of Point and Vector" />
   </component>
 </project>
