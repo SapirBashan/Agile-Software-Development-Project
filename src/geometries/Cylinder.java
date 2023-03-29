@@ -34,7 +34,30 @@ public class Cylinder extends Tube{
          * @return The normal of the cylinder at the specified point.
          */
     public Vector getNormal(Point p) {
-        return null;
+
+        double t;
+        //if the point is on the edge of the cylinder return the direction of the axis ray
+        //this try function checks if the point is on the edge of the cylinder
+        if (p.equals(this.getAxisRay().getP0()) || p.equals(this.getAxisRay().getP0().add(this.getAxisRay().getDir().scale(this.height)))) {
+            return this.getAxisRay().getDir().normalize();
+        }
+        //if the point is not on the edge of the cylinder
+        else {
+            try {
+                t = this.getAxisRay().getDir().dotProduct(p.subtract(this.getAxisRay().getP0()));
+            } catch (IllegalArgumentException e) {
+                return (p.subtract(this.getAxisRay().getP0())).normalize();
+            }
+            //if the point is on the side of the cylinde
+            if (t > 0 && t < this.height) {
+                Point o = this.getAxisRay().getP0().add(this.getAxisRay().getDir().scale(t));
+                return p.subtract(o).normalize();
+            }
+            //if the point is not on the side of the cylinder
+            else {
+                return (p.subtract(this.getAxisRay().getP0())).normalize();
+            }
+        }
     }
 
 }
