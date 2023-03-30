@@ -32,20 +32,19 @@ public class Tube extends RadialGeometry {
      */
     @Override
     public Vector getNormal(Point p) {
-        //if the point is on the edge of the cylinder return the direction of the axis ray
         double t;
-        //this try function checks if the point is on the edge of the cylinder
+        //this try function checks if the point is on the edge of the tube
         try {
-            //if the point is on the edge of the cylinder return the direction of the axis ray
+            //if the point is on the edge of the tube return the direction of the axis ray
             t = this.axisRay.getDir().dotProduct(p.subtract(this.axisRay.getP0()));
         }
         catch (IllegalArgumentException e){
-            //if the point is not on the edge of the cylinder
+            //if the point is not on the edge of the tube
             return (p.subtract(this.axisRay.getP0())).normalize();
         }
-        //if the point is on the side of the cylinde
+        //if the point is on the side of the tube
         Point o = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
-        //if the point is not on the side of the cylinder
+        //if the point is not on the side of the tube
         return p.subtract(o).normalize();
     }
 }

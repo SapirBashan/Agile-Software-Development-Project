@@ -51,7 +51,7 @@ public class Cylinder extends Tube{
             //if the point is on the side of the cylinde
             if (t > 0 && t < this.height) {
                 Point o = this.getAxisRay().getP0().add(this.getAxisRay().getDir().scale(t));
-                return p.subtract(o).normalize();
+                return super.getNormal(p);
             }
             //if the point is not on the side of the cylinder
             else {

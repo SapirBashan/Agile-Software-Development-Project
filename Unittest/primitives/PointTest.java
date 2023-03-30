@@ -22,7 +22,7 @@ class PointTest {
         // =============== Boundary Values Tests ==================
 
         // TC10: result is zero
-        assertEquals(new Point(0,0,0), p.add(new Vector(-1, -2, -3)));
+        assertEquals(new Point(0,0,0), p.add(new Vector(-1, -2, -3)), "ERROR: Point + Vector does not work correctly");
     }
     /**
      * Test method for {@link primitives.Point#subtract(primitives.Point)}.
