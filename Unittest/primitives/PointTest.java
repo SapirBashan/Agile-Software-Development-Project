@@ -55,6 +55,7 @@ class PointTest {
         assertEquals(3, p1.distanceSquared(p2), "ERROR: Point distanceSquared does not work correctly");
     }
 
+
     /**
      * Test method for {@link primitives.Point#distance(primitives.Point)}.
      */
