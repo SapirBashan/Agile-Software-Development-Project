@@ -46,9 +46,9 @@ public class Cylinder extends Tube{
             try {
                 t = this.getAxisRay().getDir().dotProduct(p.subtract(this.getAxisRay().getP0()));
             } catch (IllegalArgumentException e) {
-                return (p.subtract(this.getAxisRay().getP0())).normalize();
+                return this.getAxisRay().getDir().normalize();
             }
-            //if the point is on the side of the cylinde
+            //if the point is on the side of the cylinder
             if (t > 0 && t < this.height) {
                 Point o = this.getAxisRay().getP0().add(this.getAxisRay().getDir().scale(t));
                 return super.getNormal(p);

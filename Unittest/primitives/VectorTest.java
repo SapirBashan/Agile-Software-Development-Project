@@ -58,13 +58,24 @@ class VectorTest {
 
     @Test
     void lengthSquared() {
-       //this function is based on dot product, and we already tested dot product
+        Vector v1 = new Vector(1, 2, 3);
+
+        // ============ Equivalence Partitions Tests ==============
+
+        // TC01: two different points that are not orthogonal
+        Vector v2 = new Vector(2, 3, 4);
+        assertEquals(14, v1.lengthSquared(), "ERROR: lengthSquared() for two different vectors does not work correctly");
     }
 
     @Test
     void length() {
-        //this function is based on dot product, and we already tested dot product
-    }
+        Vector v1 = new Vector(1, 2, 3);
+
+        // ============ Equivalence Partitions Tests ==============
+
+        // TC01: two different points that are not orthogonal
+        Vector v2 = new Vector(2, 3, 4);
+        assertEquals(Math.sqrt(14), v1.length(), "ERROR: length() for two different vectors does not work correctly");    }
 
 
     @Test

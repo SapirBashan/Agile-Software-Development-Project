@@ -36,7 +36,7 @@ public class Tube extends RadialGeometry {
         //this try function checks if the point is on the edge of the tube
         try {
             //if the point is on the edge of the tube return the direction of the axis ray
-            t = this.axisRay.getDir().dotProduct(p.subtract(this.axisRay.getP0()));
+            t = this.axisRay.getDir().normalize().dotProduct(p.subtract(this.axisRay.getP0()));
         }
         catch (IllegalArgumentException e){
             //if the point is not on the edge of the tube
