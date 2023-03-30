@@ -1,3 +1,9 @@
+/**
+
+ Sapir Bashan 214103368 sapirbashan1@gmail.com
+ Shlomi Shapira 212280044 yshshapira@gmail.com
+
+ */
 package test;
 
 import static java.lang.System.out;
@@ -76,6 +82,7 @@ public final class Main {
             out.println("ERROR: the normalized vector is not parallel to the original one");
         } catch (Exception e) {}
         if (v.dotProduct(u) < 0)
+
             out.println("ERROR: the normalized vector is opposite to the original one");
 
         // Test operations with points and vectors
@@ -86,5 +93,10 @@ public final class Main {
             out.println("ERROR: Point - Point does not work correctly");
 
         out.println("If there were no any other outputs - all tests succeeded!");
+
+       
+
     }
+
+
 }
