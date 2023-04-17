@@ -45,6 +45,7 @@ class CylinderTest {
         assertTrue(vn5.equals(c.getNormal(new Point(0, 4, 0))) || vn5.equals(c.getNormal(new Point(0,-4,0)))
                 , "ERROR: getNormal() TC11 the point is not on the base height of the cylinder");
 
-
     }
+
+
 }
