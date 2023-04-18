@@ -2,10 +2,12 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PlaneTest {
 
@@ -46,8 +48,50 @@ class PlaneTest {
 
     @Test
     void testfindIntsersections(){
+        Point p1 = new Point(1,0,0);
+        Point p2 = new Point(0,1,0);
+        Point p3 = new Point(0,0,1);
+        Plane plane = new Plane(p1,p2,p3);
+
+        Point p = new Point(0,0,0);
+        Ray r;
+        Vector v;
+        List<Point> result;
         // ============ Equivalence Partitions Tests ==============
 
+        // TC 00: ray start before the plane, not parallel and not orthogonal
+        v = new Vector(1,0,0);
+        r = new Ray(p, v);
+        result = plane.findIntsersections(r);
 
+        assertEquals(1, result.size());
+        assertEquals(List.of(new Point(1,0,0)), result);
+
+        // TC 01: ray start after the plane, not parallel and not orthogonal
+        v = new Vector(1,0,0);
+        r = new Ray(p, v.scale(-1.0));
+
+        assertNull(plane.findIntsersections(r));
+
+        // =============== Boundary Values Tests =================
+        // TC 10: the ray start at the plane
+        v = new Vector(1,0,0);
+        r = new Ray(p1, v);
+
+        assertNull(plane.findIntsersections(r));
+
+        // TC 11: the ray parallel to the plane
+        v = new Vector(1,0,0);
+        r = new Ray(p, v.scale(-1.0));
+
+        assertNull(plane.findIntsersections(r));
+
+        // TC 12: the ray orthogonal to the plane
+        v = new Vector(1,1,1);
+        r = new Ray(p, v);
+        result = plane.findIntsersections(r);
+
+        assertEquals(1, result.size());
+        assertEquals(List.of(new Point(1.0/3, 1.0/3, 1.0/3)), result);
     }
 }
