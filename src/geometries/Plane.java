@@ -2,6 +2,8 @@ package geometries;
 
 import primitives.*;
 
+import java.util.List;
+
 /**
  * The Plane class represents a plane in a three-dimensional space.
  * A plane is defined by a point on the plane and a normal vector
@@ -75,4 +77,13 @@ public class Plane implements Geometry{
     public Vector getNormal() {
         return normal;
     }
+
+    /**
+     * @param ray the ray that intersect with the geometry
+     * @return list of points that the ray intersect with the geometry
+     */
+    public List<Point> findIntsersections(Ray ray){
+        return null;
+    }
+
 }

@@ -1,6 +1,5 @@
 package primitives;
 
-import java.util.Objects;
 /**
  * The Point class represents a point in a three-dimensional space.
  * A point is defined by its x, y, and z coordinates.
@@ -27,6 +26,31 @@ public class Point {
     Point(Double3 xyz) {
         this.xyz = xyz;
     }
+
+    /**
+     * Returns the x coordinate of the point.
+     * @return the x coordinate of the point
+     */
+    public double getX() {
+        return xyz.d1;
+    }
+    /**
+     * Returns the y coordinate of the point.
+     * @return the y coordinate of the point
+     */
+    public double getY() {
+        return xyz.d2;
+    }
+
+    /**
+     * Returns the z coordinate of the point.
+     * @return the z coordinate of the point
+     */
+    public double getZ() {
+        return xyz.d3;
+    }
+
+
     /**
      * Returns true if this point is equal to the specified object.
      * Two points are equal if their x, y, and z coordinates are equal.

@@ -42,8 +42,11 @@ class PlaneTest {
 
         //TC02 : if the vector is normal
         assertEquals(0, (plane.getNormal().length() -1), 0.000001, "ERROR: the vector was not normal");
-        
+    }
 
+    @Test
+    void testfindIntsersections(){
+        // ============ Equivalence Partitions Tests ==============
 
 
     }

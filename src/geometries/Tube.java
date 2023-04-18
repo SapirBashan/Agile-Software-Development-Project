@@ -3,6 +3,9 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 import primitives.Ray;
+
+import java.util.List;
+
 /**
  * The Tube class represents a tube in a three-dimensional space.
  * A tube is defined by a center axis ray and a radius value.
@@ -47,4 +50,12 @@ public class Tube extends RadialGeometry {
         //if the point is not on the side of the tube
         return p.subtract(o).normalize();
     }
+    /**
+     * @param ray the ray that intersect with the geometry
+     * @return list of points that the ray intersect with the geometry
+     */
+    public List<Point> findIntsersections(Ray ray){
+        return null;
+    }
+
 }
