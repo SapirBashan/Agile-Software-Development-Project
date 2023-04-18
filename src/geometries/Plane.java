@@ -3,27 +3,24 @@ package geometries;
 import primitives.*;
 
 import java.util.List;
-import static primitives.Util.*;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * The Plane class represents a plane in a three-dimensional space.
  * A plane is defined by a point on the plane and a normal vector
  * perpendicular to the plane.
  */
-public class Plane implements Geometry {
-    /**
-     * The point on the plane.
-     */
+public class Plane implements Geometry{
+    /** The point on the plane. */
     private final Point q0;
 
-    /**
-     * The normal vector to the plane.
-     */
+    /** The normal vector to the plane. */
     private final Vector normal;
 
     /**
      * Returns the point on the plane.
-     *
      * @return the point on the plane
      */
     public Point getQ0() {
@@ -80,7 +77,6 @@ public class Plane implements Geometry {
 
     /**
      * Returns the normal vector to the plane.
-     *
      * @return the normal vector to the plane
      */
     public Vector getNormal() {
