@@ -2,10 +2,14 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
-import primitives.Vector;
 import primitives.Ray;
+import primitives.Vector;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.Assert.assertNull;
 
 /**
  * Testing Triangle
@@ -23,44 +27,42 @@ class TriangleTest {
         assertTrue((t.getNormal(new Point(0.5, 0.5, 0.5)).equals(tn)) ||
                 (t.getNormal(new Point(0.5, 0.5, 0.5)).equals(tn.scale(-1.0))), "ERROR: getNormal() wrong value");
         //TC02 : if the vector is normal
-        assertTrue(t.getNormal(p1).length() == 1, "ERROR: the vector was not normal");
+        assertEquals(1, t.getNormal(p1).length(), "ERROR: the vector was not normal");
     }
     @Test
     void testFindIntersections() {
-        // ============ Equivalence Partitions Tests ==============
-        // TC01: Ray is in the tiangle
+        List<Point> result;
         Point p1 = new Point(1, 0, 0);
         Point p2 = new Point(0, 1, 0);
         Point p3 = new Point(0, 0, 1);
         Triangle t = new Triangle(p1, p2, p3);
-        Ray ray = new Ray(new Point(0, 0.5, 0), new Vector(0.5, 0, 0.5));
-        assertEquals(1, t.findIntsersections(ray).size(), "ERROR: Ray does not intersect the triangle");
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: Ray is in the triangle
+        Ray r = new Ray(new Point(0,0,0), new Vector(1,1,1));
+        result = t.findIntsersections(r);
+        assertEquals(1, result.size(), "ERROR: Ray does not intersect the triangle");
+        assertEquals(List.of(new Point(1.0/3,1.0/3,1.0/3)), result);
 
         //TC02: Ray is not in the triangle
-        ray = new Ray(new Point(0, -1, 0), new Vector(2, 1,0.5 ));
-        assertEquals(null, t.findIntsersections(ray), "ERROR: Ray intersects the triangle");
+        r = new Ray(new Point(0, 0, 0), new Vector(-1, -1,-1 ));
+        assertNull(t.findIntsersections(r), "ERROR: Ray intersects the triangle");
 
         //TC03: Ray is in the plane but not in the triangle
-        ray = new Ray(new Point(-1, 0, 0), new Vector(3, -1, 2));
-        assertEquals(null, t.findIntsersections(ray), "ERROR: Ray intersects the triangle");
+        r = new Ray(new Point(0, -1, 0), new Vector(1, 0, 0));
+        assertNull(t.findIntsersections(r), "ERROR: Ray intersects the triangle");
 
         // =============== Boundary Values Tests ==================
         //TC10: Ray hits the point of the triangle
-        ray = new Ray(new Point(-1, 0, 0), new Vector(2, 0, 0));
-        assertEquals(1, t.findIntsersections(ray).size(), "ERROR: Ray does not intersect the triangle");
+        r = new Ray(new Point(0, 0, 0), new Vector(1, 0, 0));
+        assertNull(t.findIntsersections(r), "ERROR: Ray does not intersect the triangle");
 
         //TC11: Ray hits the edge of the triangle
-        ray = new Ray(new Point(-1, 0, 0), new Vector(1, 1, 0));
-        assertEquals(1, t.findIntsersections(ray).size(), "ERROR: Ray does not intersect the triangle");
+        r = new Ray(new Point(-1, 0, 0), new Vector(1, 1, 0));
+        assertNull(t.findIntsersections(r), "ERROR: Ray does not intersect the triangle");
 
         //TC12: Ray hits the continuation of the edge of the triangle
-        ray = new Ray(new Point(-1, 0, 0), new Vector(1, -0.5, 1.5));
-        assertEquals(null, t.findIntsersections(ray), "ERROR: Ray intersects the triangle");
-
-
-
-
-
+        r = new Ray(new Point(-1, 0, 0), new Vector(1, -0.5, 1.5));
+        assertNull(t.findIntsersections(r), "ERROR: Ray intersects the triangle");
 
     }
 }

@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
+import primitives.Vector;
 
 import java.util.List;
 
@@ -23,7 +24,25 @@ public class Triangle extends Polygon{
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
+    @Override
     public List<Point> findIntsersections(Ray ray){
-        return null;
+        List<Point> result = plane.findIntsersections(ray);
+        if(result == null)
+           return null;
+        Point p = result.get(0);
+        try {
+            Vector n1 = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
+            Vector n2 = (vertices.get(2).subtract(vertices.get(1))).crossProduct(vertices.get(1).subtract(p));
+            Vector n3 = (vertices.get(0).subtract(vertices.get(2))).crossProduct(vertices.get(2).subtract(p));
+
+            n1.dotProduct(n2);
+            n1.dotProduct(n3);
+            n2.dotProduct(n3);
+        }
+        catch (IllegalArgumentException e){
+            return null;
+        }
+
+        return result;
     }
 }

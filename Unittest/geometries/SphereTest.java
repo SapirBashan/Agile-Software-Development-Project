@@ -21,7 +21,7 @@ class SphereTest {
 
         // TC01: normal to sphere
         Vector vn = new Vector(1, 0, 0).normalize();
-        assertTrue((s.getNormal(new Point(1, 0, 0)).equals(vn)), "ERROR: getNormal() wrong value");
+        assertEquals(vn, s.getNormal(new Point(1, 0, 0)), "ERROR: getNormal() wrong value");
 
 
         //TC02 : if the vector is normal
@@ -102,14 +102,14 @@ class SphereTest {
 
         assertEquals(List.of(p2), result);
 
-        // TC15: Ray starts inside (1 points)
+        // TC15: Ray starts inside (1 point)
         Point p3 = new Point(0.5,0,0);
         r = new Ray(p3, v);
         result = sphere.findIntsersections(r);
         assertEquals(1, result.size(), "Wrong number of points");
         assertEquals(List.of(p2), result);
 
-        // TC16: Ray starts at the center (1 points)
+        // TC16: Ray starts at the center (1 point)
         r = new Ray(sphere.getCenter(), v);
         result = sphere.findIntsersections(r);
 

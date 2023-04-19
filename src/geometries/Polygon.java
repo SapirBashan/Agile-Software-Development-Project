@@ -4,6 +4,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static primitives.Util.isZero;
@@ -89,6 +90,30 @@ public class Polygon implements Geometry {
      * @return list of points that the ray intersect with the geometry
      */
     public List<Point> findIntsersections(Ray ray){
-        return null;
+        List<Point> result = plane.findIntsersections(ray);
+
+        if(result == null)
+            return null;
+
+        Point p = result.get(0);
+        List<Vector> vecs = new ArrayList<>();
+        try {
+            Point prevP = vertices.get(vertices.size() - 1);
+            for (Point p1 : vertices) {
+                vecs.add(p1.subtract(prevP).crossProduct(prevP.subtract(p)));
+                prevP = p1;
+            }
+
+            Vector prevV = vecs.get(vecs.size()-1);
+            for (Vector v : vecs) {
+                v.dotProduct(prevV);
+                prevV = v;
+            }
+        }
+        catch (IllegalArgumentException e){
+            return null;
+        }
+
+        return result;
     }
 }
