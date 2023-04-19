@@ -54,7 +54,7 @@ public class Tube extends RadialGeometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntsersections(Ray ray){
+    public List<Point> findIntersections(Ray ray){
         return null;
     }
 

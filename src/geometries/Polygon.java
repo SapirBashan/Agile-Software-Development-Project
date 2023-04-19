@@ -89,8 +89,8 @@ public class Polygon implements Geometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntsersections(Ray ray){
-        List<Point> result = plane.findIntsersections(ray);
+    public List<Point> findIntersections(Ray ray){
+        List<Point> result = plane.findIntersections(ray);
 
         if(result == null)
             return null;
@@ -106,7 +106,9 @@ public class Polygon implements Geometry {
 
             Vector prevV = vecs.get(vecs.size()-1);
             for (Vector v : vecs) {
-                v.dotProduct(prevV);
+                if(v.dotProduct(prevV) < 0){
+                    return null;
+                }
                 prevV = v;
             }
         }

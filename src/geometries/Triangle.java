@@ -25,8 +25,8 @@ public class Triangle extends Polygon{
      * @return list of points that the ray intersect with the geometry
      */
     @Override
-    public List<Point> findIntsersections(Ray ray){
-        List<Point> result = plane.findIntsersections(ray);
+    public List<Point> findIntersections(Ray ray){
+        List<Point> result = plane.findIntersections(ray);
         if(result == null)
            return null;
         Point p = result.get(0);
@@ -35,9 +35,9 @@ public class Triangle extends Polygon{
             Vector n2 = (vertices.get(2).subtract(vertices.get(1))).crossProduct(vertices.get(1).subtract(p));
             Vector n3 = (vertices.get(0).subtract(vertices.get(2))).crossProduct(vertices.get(2).subtract(p));
 
-            n1.dotProduct(n2);
-            n1.dotProduct(n3);
-            n2.dotProduct(n3);
+            if(n1.dotProduct(n2) < 0 || n1.dotProduct(n3) < 0 || n2.dotProduct(n3) < 0){
+                return null;
+            }
         }
         catch (IllegalArgumentException e){
             return null;

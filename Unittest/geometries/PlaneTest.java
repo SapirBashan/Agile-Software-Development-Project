@@ -47,7 +47,7 @@ class PlaneTest {
     }
 
     @Test
-    void testfindIntsersections(){
+    void testFindIntersections(){
         Point p1 = new Point(1,0,0);
         Point p2 = new Point(0,1,0);
         Point p3 = new Point(0,0,1);
@@ -62,7 +62,7 @@ class PlaneTest {
         // TC 00: ray start before the plane, not parallel and not orthogonal
         v = new Vector(1,0,0);
         r = new Ray(p, v);
-        result = plane.findIntsersections(r);
+        result = plane.findIntersections(r);
 
         assertEquals(1, result.size());
         assertEquals(List.of(new Point(1,0,0)), result);
@@ -71,25 +71,25 @@ class PlaneTest {
         v = new Vector(1,0,0);
         r = new Ray(p, v.scale(-1.0));
 
-        assertNull(plane.findIntsersections(r));
+        assertNull(plane.findIntersections(r));
 
         // =============== Boundary Values Tests =================
         // TC 10: the ray start at the plane
         v = new Vector(1,0,0);
         r = new Ray(p1, v);
 
-        assertNull(plane.findIntsersections(r));
+        assertNull(plane.findIntersections(r));
 
         // TC 11: the ray parallel to the plane
         v = new Vector(1,0,0);
         r = new Ray(p, v.scale(-1.0));
 
-        assertNull(plane.findIntsersections(r));
+        assertNull(plane.findIntersections(r));
 
         // TC 12: the ray orthogonal to the plane
         v = new Vector(1,1,1);
         r = new Ray(p, v);
-        result = plane.findIntsersections(r);
+        result = plane.findIntersections(r);
 
         assertEquals(1, result.size());
         assertEquals(List.of(new Point(1.0/3, 1.0/3, 1.0/3)), result);

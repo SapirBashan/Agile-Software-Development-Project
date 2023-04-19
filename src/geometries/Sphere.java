@@ -54,7 +54,7 @@ public class Sphere extends RadialGeometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntersections(Ray ray) {
         Point p1 = null;
         Point p2 = null;
         List<Point> list = null;
@@ -78,18 +78,18 @@ public class Sphere extends RadialGeometry {
         double t2 = tm + th;
 
         if (t1 > 0) {
-            p1 = ray.getP0().add(ray.getDir().scale(t1));
+            p1 = ray.getPoint(t1);
         }
-            if (t2 > 0) {
-                p2 = ray.getP0().add(ray.getDir().scale(t2));
-            }
-            if (p1 != null && p2 != null) {
-                list = List.of(p1, p2);
-            } else if (p1 != null) {
-                list = List.of(p1);
-            } else if (p2 != null) {
-                list = List.of(p2);
-            }
-            return list;
+        if (t2 > 0) {
+            p2 = ray.getPoint(t2);
         }
+        if (p1 != null && p2 != null) {
+            list = List.of(p1, p2);
+        } else if (p1 != null) {
+            list = List.of(p1);
+        } else if (p2 != null) {
+            list = List.of(p2);
+        }
+        return list;
+    }
     }

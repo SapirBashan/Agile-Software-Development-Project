@@ -87,7 +87,7 @@ public class Plane implements Geometry{
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntersections(Ray ray) {
         double nv, t;
         try {
             nv = this.normal.dotProduct(ray.getDir());
@@ -99,7 +99,7 @@ public class Plane implements Geometry{
             return null;
         }
         if(t > 0) {
-            Point p = ray.getP0().add(ray.getDir().scale(t));
+            Point p = ray.getPoint(t);
             return List.of(p);
         }
 
