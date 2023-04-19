@@ -76,22 +76,46 @@ class PlaneTest {
         // =============== Boundary Values Tests =================
         // TC 10: the ray start at the plane
         v = new Vector(1,0,0);
+        r = new Ray(new Point(1.0/3,1.0/3,1.0/3), v);
+
+        assertNull(plane.findIntersections(r));
+
+        // TC 11: the ray start at the plane point
+        v = new Vector(1,0,0);
+        r = new Ray(plane.getQ0(), v);
+
+        assertNull(plane.findIntersections(r));
+
+        // TC 12: the ray parallel to the plane
+        v = new Vector(1,-1,0);
+        r = new Ray(p, v);
+
+        assertNull(plane.findIntersections(r));
+
+        // TC 13: the ray parallel to the plane and in the plane
+        v = new Vector(1,-1,0);
         r = new Ray(p1, v);
 
         assertNull(plane.findIntersections(r));
 
-        // TC 11: the ray parallel to the plane
-        v = new Vector(1,0,0);
-        r = new Ray(p, v.scale(-1.0));
-
-        assertNull(plane.findIntersections(r));
-
-        // TC 12: the ray orthogonal to the plane
+        // TC 14: the ray orthogonal to the plane and start before
         v = new Vector(1,1,1);
         r = new Ray(p, v);
         result = plane.findIntersections(r);
 
         assertEquals(1, result.size());
         assertEquals(List.of(new Point(1.0/3, 1.0/3, 1.0/3)), result);
+
+        // TC 15: the ray orthogonal to the plane and start in the plane
+        v = new Vector(1,1,1);
+        r = new Ray(p1, v);
+
+        assertNull(plane.findIntersections(r));
+
+        // TC 16: the ray orthogonal to the plane and start after
+        v = new Vector(1,1,1);
+        r = new Ray(new Point(1,1,1), v);
+
+        assertNull(plane.findIntersections(r));
     }
 }

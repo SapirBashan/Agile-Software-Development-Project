@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="Ex3 without comments">
-      <change afterPath="$PROJECT_DIR$/Unittest/geometries/GeometriesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="Ex3 without comments 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unittest/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/PolygonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/TriangleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +264,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681910538312</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎-00013" summary="Ex3 without comments">
+      <created>1681921374966</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681921374966</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,19 +279,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -317,7 +300,8 @@
     <MESSAGE value="final stage 2" />
     <MESSAGE value="Ex 3 A" />
     <MESSAGE value="Ex3 without comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ex3 without comments" />
+    <MESSAGE value="Ex3 without comments 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex3 without comments 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
