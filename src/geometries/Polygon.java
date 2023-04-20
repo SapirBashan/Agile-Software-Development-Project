@@ -4,7 +4,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static primitives.Util.isZero;
@@ -81,9 +81,7 @@ public class Polygon implements Geometry {
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
     }
-    /**
-     * @return the normal of the geometry at the specified point.
-     */
+
     @Override
     public Vector getNormal(Point point) { return plane.getNormal(); }
 
@@ -98,15 +96,20 @@ public class Polygon implements Geometry {
             return null;
 
         Point p = result.get(0);
-        List<Vector> vecs = new ArrayList<>();
+        List<Vector> vecs = new LinkedList<>();
+
+        // check if the point is inside the polygon
+        // we need a try for a case that the point one of the polygon's vertices
         try {
-            Point prevP = vertices.get(vertices.size() - 1);
+            Point prevP = vertices.get(vertices.size() - 1);  //the last point in the list
             for (Point p1 : vertices) {
+                //if the point is on the edge of the polygon
+                //the dot product will be zero
                 vecs.add(p1.subtract(prevP).crossProduct(prevP.subtract(p)));
                 prevP = p1;
             }
 
-            Vector prevV = vecs.get(vecs.size()-1);
+            Vector prevV = vecs.get(vecs.size()-1); //the last vector in the list
             for (Vector v : vecs) {
                 if(v.dotProduct(prevV) < 0){
                     return null;

@@ -94,6 +94,8 @@ public class Plane implements Geometry{
             if (isZero(nv)) {
                 return null;
             }
+            //this function calculates the distance between the ray and the plane
+            //if the distance is 0 the ray is on the plane
             t = alignZero(normal.dotProduct(q0.subtract(ray.getP0())) / nv);
         } catch (IllegalArgumentException e) {
             return null;

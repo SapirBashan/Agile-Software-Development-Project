@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.testng.Assert.assertNull;
 import static primitives.Util.isZero;
 
-class PolygonTests {
+class PolygonTest {
 
     /**
      * tssts the constructor of Polygon
@@ -121,13 +121,13 @@ class PolygonTests {
         Polygon pol = new Polygon(p1, p2, p3, p4);
 
         // ============ Equivalence Partitions Tests ==============
-        // TC01: Ray is in the polygon
+        // TC01: Ray hits the polygon (1 point)
         Ray r = new Ray(new Point(0,-1,0.5), new Vector(0,1,0));
         result = pol.findIntersections(r);
         assertEquals(1, result.size(), "ERROR: Ray does not intersect the triangle");
         assertEquals(List.of(new Point( 0,0,0.5)), result);
 
-        //TC02: Ray is not in the polygon
+        //TC02: Ray does not hit the polygon (0 points)
         r = new Ray(new Point(0, -1, 0.5), new Vector(0, -1,0 ));
         assertNull(pol.findIntersections(r), "ERROR: Ray intersects the triangle");
 

@@ -61,11 +61,7 @@ public class Cylinder extends Tube{
         }
     }
 
-    /**
-     * Returns a list of the intersections of the cylinder with the specified ray.
-     * @param ray The ray to find the intersections with.
-     * @return A list of the intersections of the cylinder with the specified ray.
-     */
+
     @Override
     public List<Point> findIntersections(Ray ray) {
 

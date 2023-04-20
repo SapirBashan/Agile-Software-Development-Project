@@ -54,12 +54,6 @@ public class Tube extends RadialGeometry {
         return p.subtract(o).normalize();
     }
 
-    /**
-     * Returns a list of the intersections of the tube with the specified ray.
-     * @param ray the ray to find the intersections with
-     * @return a list of the intersections of the tube with the specified ray
-     */
-
     @Override
     public List<Point> findIntersections(Ray ray) {
 
@@ -91,6 +85,7 @@ public class Tube extends RadialGeometry {
             return null;
         }
 
+        //if A != 0 continue to calculate B and C
         try {
 
             //calculate deltaP (delP) vector, P-Pa
@@ -109,7 +104,6 @@ public class Tube extends RadialGeometry {
             //C = (delP - (delP,Va)Va)^2 - r^2
             C = DeltaPMinusDeltaPVaVa.lengthSquared() - radius * radius;
         }
-
         //in case delP = 0, or delP - (delP,Va)Va = (0, 0, 0)
         catch (IllegalArgumentException ex) {
             B = 0;
