@@ -9,7 +9,11 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNull;
 
 class GeometriesTest {
-
+    /**
+     * tests the findIntersections function of Geometries
+     * Test method for {@link geometries.Geometries#findIntersections(primitives.Ray)}.
+     * @throws IllegalArgumentException
+     */
     @Test
     void findIntersections() {
         Point p = new Point(0,0,0);
@@ -23,7 +27,7 @@ class GeometriesTest {
         Geometries geometries;
 
         // ============ Equivalence Partitions Tests ==============
-        // TC 00: some geometries are intersectable
+        // TC 00: some geometries are intersect-able
         geometries = new Geometries(plain, triangle, sphere);
         ray = new Ray(new Point(-4,0,0), new Vector(1,0,0));
         assertEquals(3, geometries.findIntersections(ray).size());
@@ -34,17 +38,17 @@ class GeometriesTest {
         ray = new Ray(p, new Vector(1,1,1));
         assertNull(geometries.findIntersections(ray));
 
-        // TC 11: no geometry are intersectable
+        // TC 11: no geometry are intersect-able
         geometries = new Geometries(plain, triangle, sphere);
         ray = new Ray(new Point(-4,-4,-4), new Vector(-1,0,0));
         assertNull(geometries.findIntersections(ray));
 
-        // TC 12: one geometry are intersectable
+        // TC 12: one geometry are intersect-able
         geometries = new Geometries(plain, triangle, sphere);
         ray = new Ray(p, new Vector(0,1,0));
         assertEquals(1, geometries.findIntersections(ray).size());
 
-        // TC 13: all geometries are intersectable
+        // TC 13: all geometries are intersect-able
         geometries = new Geometries(plain, triangle, sphere);
         ray = new Ray(new Point(-1,-1,-1), new Vector(2,1,1));
         assertEquals(1, geometries.findIntersections(ray).size());

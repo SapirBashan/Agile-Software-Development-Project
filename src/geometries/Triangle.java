@@ -26,10 +26,15 @@ public class Triangle extends Polygon{
      */
     @Override
     public List<Point> findIntersections(Ray ray){
+        //check if the ray intersect with the plane of the triangle
         List<Point> result = plane.findIntersections(ray);
         if(result == null)
            return null;
         Point p = result.get(0);
+        //check if the point is inside the triangle
+        //if the point is on the same side of the triangle's edges, it is inside the triangle
+        //if the point is on the edge of the triangle, it is inside the triangle
+        //if the point is on the opposite side of the triangle's edges, it is outside the triangle
         try {
             Vector n1 = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
             Vector n2 = (vertices.get(2).subtract(vertices.get(1))).crossProduct(vertices.get(1).subtract(p));

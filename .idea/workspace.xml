@@ -6,7 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="Ex3 without comments 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/CylinderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/GeometriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unittest/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/PlaneTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/PolygonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/SphereTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +103,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5783_3368_0044">
+  <component name="RunManager" selected="JUnit.CylinderTest.findIntersections">
     <configuration name="All in ISE5783_3368_0044" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <option name="PACKAGE_NAME" value="" />
@@ -97,7 +112,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeometriesTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CylinderTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
         <pattern>
@@ -106,7 +121,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
+      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTest" />
       <option name="METHOD_NAME" value="findIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -129,22 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolygonTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_3368_0044" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SphereTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
@@ -161,13 +160,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TubeTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_3368_0044" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
+      <option name="METHOD_NAME" value="findIntersections" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CylinderTest.findIntersections" />
+        <item itemvalue="JUnit.TubeTest.findIntersections" />
+        <item itemvalue="JUnit.SphereTest.testGetNormal" />
         <item itemvalue="JUnit.All in ISE5783_3368_0044" />
         <item itemvalue="JUnit.PolygonTests.testFindIntersections" />
-        <item itemvalue="JUnit.PolygonTests.testGetNormal" />
-        <item itemvalue="JUnit.GeometriesTest.findIntersections" />
-        <item itemvalue="JUnit.SphereTest.testGetNormal" />
       </list>
     </recent_temporary>
   </component>
@@ -257,21 +272,7 @@
       <option name="project" value="LOCAL" />
       <updated>1680190050843</updated>
     </task>
-    <task id="LOCAL‎-00012" summary="Ex 3 A">
-      <created>1681910538312</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL‎-00012" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681910538312</updated>
-    </task>
-    <task id="LOCAL‎-00013" summary="Ex3 without comments">
-      <created>1681921374966</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL‎-00013" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681921374966</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -279,7 +280,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -299,19 +312,7 @@
     <MESSAGE value="little fixes" />
     <MESSAGE value="final stage 2" />
     <MESSAGE value="Ex 3 A" />
-    <MESSAGE value="Ex3 without comments" />
-    <MESSAGE value="Ex3 without comments 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ex3 without comments 2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="Ex 3 A" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_3368_0044$SphereTest_testFindIntersections.ic" NAME="SphereTest.testFindIntersections Coverage Results" MODIFIED="1681730630041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

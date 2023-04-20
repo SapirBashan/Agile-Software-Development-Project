@@ -10,7 +10,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlaneTest {
-
+   /**
+    * test the constructor of the plane
+    * Test method for {@link geometries.Plane#Plane(primitives.Point, primitives.Point, primitives.Point)}.
+    * @throws IllegalArgumentException
+    */
     @Test
     void testPlane() {
 
@@ -29,7 +33,9 @@ class PlaneTest {
         }
 
         /**
+         * test the getNormal function
          * Test method for {@link geometries.Plane#getNormal(primitives.Point)}.
+         * @throws IllegalArgumentException
          */
     @Test
     void testGetNormal() {
@@ -46,6 +52,11 @@ class PlaneTest {
         assertEquals(0, (plane.getNormal().length() -1), 0.000001, "ERROR: the vector was not normal");
     }
 
+    /**
+    * test the findIntersections function
+    * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}.
+     * @throws IllegalArgumentException
+     */
     @Test
     void testFindIntersections(){
         Point p1 = new Point(1,0,0);
@@ -64,58 +75,58 @@ class PlaneTest {
         r = new Ray(p, v);
         result = plane.findIntersections(r);
 
-        assertEquals(1, result.size());
-        assertEquals(List.of(new Point(1,0,0)), result);
+        assertEquals(1, result.size(), "ERROR: findIntersections() wrong number of points");
+        assertEquals(List.of(new Point(1,0,0)), result, "ERROR: findIntersections() wrong value");
 
         // TC 01: ray start after the plane, not parallel and not orthogonal
         v = new Vector(1,0,0);
         r = new Ray(p, v.scale(-1.0));
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // =============== Boundary Values Tests =================
         // TC 10: the ray start at the plane
         v = new Vector(1,0,0);
         r = new Ray(new Point(1.0/3,1.0/3,1.0/3), v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // TC 11: the ray start at the plane point
         v = new Vector(1,0,0);
         r = new Ray(plane.getQ0(), v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // TC 12: the ray parallel to the plane
         v = new Vector(1,-1,0);
         r = new Ray(p, v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // TC 13: the ray parallel to the plane and in the plane
         v = new Vector(1,-1,0);
         r = new Ray(p1, v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // TC 14: the ray orthogonal to the plane and start before
         v = new Vector(1,1,1);
         r = new Ray(p, v);
         result = plane.findIntersections(r);
 
-        assertEquals(1, result.size());
-        assertEquals(List.of(new Point(1.0/3, 1.0/3, 1.0/3)), result);
+        assertEquals(1, result.size(), "ERROR: findIntersections() wrong number of points");
+        assertEquals(List.of(new Point(1.0/3, 1.0/3, 1.0/3)), result, "ERROR: findIntersections() wrong value");
 
         // TC 15: the ray orthogonal to the plane and start in the plane
         v = new Vector(1,1,1);
         r = new Ray(p1, v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
 
         // TC 16: the ray orthogonal to the plane and start after
         v = new Vector(1,1,1);
         r = new Ray(new Point(1,1,1), v);
 
-        assertNull(plane.findIntersections(r));
+        assertNull(plane.findIntersections(r), "ERROR: findIntersections() wrong number of points");
     }
 }

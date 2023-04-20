@@ -7,7 +7,7 @@ package geometries;
 abstract class RadialGeometry implements Geometry{
 
     /** The radius value of the geometry. */
-    protected final double radios;
+    protected final double radius;
 
     /**
      * Constructs a new RadialGeometry object with the specified radius.
@@ -15,12 +15,12 @@ abstract class RadialGeometry implements Geometry{
      */
     public RadialGeometry(double radius) {
 
-        this.radios = radius;
+        this.radius = radius;
     }
     /*
      * Returns the radius value of the geometry.
      */
-    public double getRadios() {
-        return radios;
+    public double getRadius() {
+        return radius;
     }
 }

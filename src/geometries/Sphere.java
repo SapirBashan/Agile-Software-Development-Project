@@ -71,9 +71,9 @@ public class Sphere extends RadialGeometry {
                 return null;
             }
         }
-        if (d >= radios)
+        if (d >= radius)
             return null;
-        double th = Math.sqrt(radios * radios - d * d);
+        double th = Math.sqrt(radius * radius - d * d);
         double t1 = tm - th;
         double t2 = tm + th;
 

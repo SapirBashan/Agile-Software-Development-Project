@@ -8,8 +8,8 @@ import primitives.Vector;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Testing Triangle
@@ -29,6 +29,11 @@ class TriangleTest {
         //TC02 : if the vector is normal
         assertEquals(1, t.getNormal(p1).length(), "ERROR: the vector was not normal");
     }
+    /**
+     * test the findIntersections function
+     * Test method for {@link geometries.Triangle#findIntersections(primitives.Ray)}.
+     * @throws IllegalArgumentException
+     */
     @Test
     void testFindIntersections() {
         List<Point> result;
