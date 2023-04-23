@@ -68,7 +68,7 @@ public class Cylinder extends Tube{
         //P1 and P2 in the cylinder, the center of the bottom and upper bases
         Point p1 = axisRay.getP0();
         Point p2 = axisRay.getTargetPoint(height);
-        Vector Va = axisRay.getDir();
+        Vector VectorRay = axisRay.getDir();
 
         List<Point> list = super.findIntersections(ray);
 
@@ -78,7 +78,7 @@ public class Cylinder extends Tube{
         //Step 1 - checking if the intersections with the tube are points on the cylinder
         if (list != null) {
             for (Point p : list) {
-                if (Va.dotProduct(p.subtract(p1)) > 0 && Va.dotProduct(p.subtract(p2)) < 0)
+                if (VectorRay.dotProduct(p.subtract(p1)) > 0 && VectorRay.dotProduct(p.subtract(p2)) < 0)
                     result.add(0, p);
             }
         }
@@ -88,8 +88,8 @@ public class Cylinder extends Tube{
         //cannot be more than 2 intersections
         if(result.size() < 2) {
             //creating 2 planes for the 2 bases
-            Plane bottomBase = new Plane(p1, Va);
-            Plane upperBase = new Plane(p2, Va);
+            Plane bottomBase = new Plane(p1, VectorRay);
+            Plane upperBase = new Plane(p2, VectorRay);
             Point p;
 
             // ======================================================
