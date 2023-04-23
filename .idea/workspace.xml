@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="little fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-    </list>
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="finished cylinder and tube including testing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682002300303</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="finished cylinder and tube including testing">
+      <created>1682248529524</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682248529524</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,7 +316,8 @@
     <MESSAGE value="Ex 3 A" />
     <MESSAGE value="documentation for the stage" />
     <MESSAGE value="little fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="little fixes" />
+    <MESSAGE value="finished cylinder and tube including testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished cylinder and tube including testing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_3368_0044$SphereTest_testFindIntersections.ic" NAME="SphereTest.testFindIntersections Coverage Results" MODIFIED="1681730630041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
