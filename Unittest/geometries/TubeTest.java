@@ -81,23 +81,23 @@ class TubeTest {
             ray = new Ray(new Point(0.5, -0.5, 0.5), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
-            // TC13: Ray is at the tube surface
+            // TC13: Ray is at the tube surface (0 points)
             ray = new Ray(new Point(2, 1, 0.5), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
-            // TC14: Ray is inside the tube and starts against axis head
+            // TC14: Ray is inside the tube and starts against axis head (0 points)
             ray = new Ray(new Point(0.5, 0.5, 1), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
-            // TC15: Ray is outside the tube and starts against axis head
+            // TC15: Ray is outside the tube and starts against axis head (0 points)
             ray = new Ray(new Point(0.5, -0.5, 1), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
-            // TC16: Ray is at the tube surface and starts against axis head
+            // TC16: Ray is at the tube surface and starts against axis head (0 points)
             ray = new Ray(new Point(2, 1, 1), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
-            // TC17: Ray is inside the tube and starts at axis head
+            // TC17: Ray is inside the tube and starts at axis head (0 points)
             ray = new Ray(new Point(1, 1, 1), v2);
             assertNull(tube2.findIntersections(ray), "must not be intersections");
 
@@ -147,7 +147,7 @@ class TubeTest {
             result = tube2.findIntersections(ray);
             assertNull(result, "Bad intersections");
 
-            // TC29: Ray starts after
+            // TC29: Ray starts after (0 points)
             ray = new Ray(new Point(4, 2, 2), new Vector(2, 1, 0));
             result = tube2.findIntersections(ray);
             assertNull(result, "Bad intersections");
@@ -161,7 +161,7 @@ class TubeTest {
                 result = List.of(result.get(1), result.get(0));
             assertEquals(List.of(new Point(1, 0, 2), new Point(1, 2, 2)), result, "Bad intersections");
 
-            // TC31: Ray starts at the surface and goes inside and crosses the axis
+            // TC31: Ray starts at the surface and goes inside and crosses the axis (1 point)
             ray = new Ray(new Point(1, 0, 2), new Vector(0, 1, 0));
             result = tube2.findIntersections(ray);
             assertNotNull(result, "must be intersections");
@@ -185,7 +185,7 @@ class TubeTest {
             result = tube2.findIntersections(ray);
             assertNull(result, "Bad intersections");
 
-            // TC35: Ray start at the axis
+            // TC35: Ray start at the axis (0 points)
             ray = new Ray(new Point(1, 1, 2), new Vector(0, 1, 0));
             result = tube2.findIntersections(ray);
             assertNotNull(result, "must be intersections");

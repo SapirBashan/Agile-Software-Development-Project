@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="finish stage 3">
-      <change afterPath="$PROJECT_DIR$/Unittest/renderer/CameraTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Unittest/renderer/integrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="finish stage 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/geometries/TubeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682248927200</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="finish stage 4">
+      <created>1682414894851</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682414894851</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,7 +336,8 @@
     <MESSAGE value="little fixes" />
     <MESSAGE value="finished cylinder and tube including testing" />
     <MESSAGE value="finish stage 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish stage 3" />
+    <MESSAGE value="finish stage 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish stage 4" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_3368_0044$SphereTest_testFindIntersections.ic" NAME="SphereTest.testFindIntersections Coverage Results" MODIFIED="1681730630041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

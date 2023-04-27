@@ -62,9 +62,9 @@ public class Camera {
     }
     /**
      * set the view plane size
-     * @param width
-     * @param height
-     * @return
+     * @param width the width of the view plane
+     * @param height the height of the view plane
+     * @return the camera
      */
     public Camera setVPSize(double width, double height) {
         this.width = width;
@@ -73,8 +73,8 @@ public class Camera {
     }
     /**
      * set the distance between the camera and the view plane
-     * @param distance
-     * @return
+     * @param distance the distance between the camera and the view plane
+     * @return the camera
      */
     public Camera setVPDistance(double distance) {
         this.distance = distance;
@@ -82,11 +82,11 @@ public class Camera {
     }
     /**
      * construct a ray through a pixel
-     * @param nX
-     * @param nY
-     * @param j
-     * @param i
-     * @return
+     * @param nX number of pixels in x axis
+     * @param nY number of pixels in y axis
+     * @param j pixel index in x axis
+     * @param i pixel index in y axis
+     * @return the ray through the pixel
      */
     public Ray constructRay(int nX, int nY, int j, int i) {
         //image center
