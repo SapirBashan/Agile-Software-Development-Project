@@ -25,7 +25,6 @@ public class ImageWriter {
 
     private BufferedImage image;
     private String imageName;
-
     private Logger logger = Logger.getLogger("ImageWriter");
 
     // ***************** Constructors ********************** //
