@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="start of stage 5">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Scene/scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/renderer/ImageWriterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/renderer/ImageWriterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/ImageWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageWriterTest.testWritePixel">
+  <component name="RunManager" selected="JUnit.All in ISE5783_3368_0044">
     <configuration name="All in ISE5783_3368_0044" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <option name="PACKAGE_NAME" value="" />
@@ -167,9 +167,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in ISE5783_3368_0044" />
         <item itemvalue="JUnit.ImageWriterTest.testWritePixel" />
         <item itemvalue="JUnit.ImageWriterTest" />
-        <item itemvalue="JUnit.All in ISE5783_3368_0044" />
         <item itemvalue="JUnit.integrationTest" />
         <item itemvalue="JUnit.integrationTest.TestIntegrationTriangle" />
       </list>
@@ -310,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682935001738</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="start of stage 5">
+      <created>1682938281941</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1682938281941</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
