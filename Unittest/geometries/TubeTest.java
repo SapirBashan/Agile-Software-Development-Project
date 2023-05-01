@@ -59,8 +59,7 @@ class TubeTest {
                 result = List.of(result.get(1), result.get(0));
             assertEquals(
                     List.of(new Point(0.4, 0.2, 0.2),
-                            new Point(2, 1, 1)), result,
-                    "ERROR - TC02: Bad intersections");
+                            new Point(2, 1, 1)), result, "ERROR - TC02: Bad intersections");
 
             // TC03: Ray's starts within tube and crosses the tube (1 point)
             ray = new Ray(new Point(1, 0.5, 0.5), new Vector(2, 1, 1));

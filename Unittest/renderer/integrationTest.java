@@ -30,6 +30,9 @@ public class integrationTest {
         Ray ray;
         List<Point> result;
         //for each pixel in the view plane
+        //count the number of intersections
+        //add the number of intersections to sum
+        //i for rows, j for columns
         for(int i=0; i<3;i++){
             for (int j=0; j<3; j++){
                 //construct a ray through pixel[i,j]
