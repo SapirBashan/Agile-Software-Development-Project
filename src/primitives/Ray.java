@@ -84,7 +84,7 @@ public class Ray {
     }
 
     public Point findClosestPoint(List<Point> l){
-        if(l.isEmpty())
+        if(l == null || l.isEmpty())
             return null;
 
         Point closestPoint = l.get(0);
