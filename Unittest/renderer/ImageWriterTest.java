@@ -8,8 +8,9 @@ import primitives.Vector;
 
 class ImageWriterTest {
 
-
-
+    /**
+     * Test method for {@link renderer.ImageWriter#writeToImage()}.
+     */
     @Test
     void testWritePixel() {
         Color Blue = new Color(0.0, 0.0, 200.0);
@@ -17,6 +18,8 @@ class ImageWriterTest {
         ImageWriter myImg = new ImageWriter("myImg", 800, 500);
         Camera camera = new Camera(new Point(0, 0, 0), new Vector(1, 0, 0), new Vector(0, 1, 0));
 
+        //this call to renderImage() is for the grid
+        //and it makes the grid blue with a red background
         for (int i = 0; i < 800; i++) {
             for (int j = 0; j < 500; j++) {
                 if (i % 50 == 0 || j % 50 == 0) {

@@ -1,9 +1,6 @@
 package renderer;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Util;
-import primitives.Vector;
+import primitives.*;
 
 
 /**
@@ -18,6 +15,8 @@ public class Camera {
     private double width;
     private double height;
     private double distance;
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
 
     //ctor
     public Camera(Point p0,Vector vTo, Vector vUp) {
@@ -80,6 +79,95 @@ public class Camera {
         this.distance = distance;
         return this;
     }
+
+    /**
+     * @param imageWriter the width to set
+     * @return the camera
+     */
+    public Camera setImageWriter(ImageWriter imageWriter) {
+        this.imageWriter = imageWriter;
+        return this;
+    }
+
+    /**
+     * @param rayTracer the ray tracer
+     * @return the camera
+     */
+    public Camera setRayTracer(RayTracerBase rayTracer) {
+        this.rayTracer = rayTracer;
+        return  this;
+    }
+    /**
+     * render the image by tracing rays through each pixel
+     * if any of the camera veriables are not initialized throw exception
+     * @throws IllegalArgumentException if imageWriter or rayTracer are not initialized
+     * @throws IllegalArgumentException if the width or height are not initialized
+     */
+    public void renderImage() throws MissingResourcesException {
+        if (imageWriter == null)
+            throw new MissingResourcesException("imageWriter is not initialized");
+        if (rayTracer == null)
+            throw new MissingResourcesException("rayTracer is not initialized");
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+        //for each pixel
+        //construct a ray through the pixel
+        //trace the ray
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++) {
+                //trace the ray
+                imageWriter.writePixel(j, i, rayTracer.traceRay(constructRay(nX, nY, j, i)));
+            }
+        }
+    }
+
+    /**
+     * construct a ray through a pixel
+     * @param nX the number of pixels in the x axis
+     * @param nY the number of pixels in the y axis
+     * @param j the index of the pixel in the x axis
+     * @param i the index of the pixel in the y axis
+     * @return the ray through the pixel
+     */
+    private Color castRay(int nX, int nY, int i, int j){
+        //construct a ray through the pixel
+        Ray ray = constructRay(nX, nY, j, i);
+        //trace the ray
+        return rayTracer.traceRay(ray);
+    }
+
+    /**
+     * print a grid on the view plane
+     * @param interval the interval between the lines of the grid
+     * @param color the color of the grid
+     * @throws IllegalArgumentException if imageWriter is not initialized
+     */
+    public void printGrid(int interval, Color color) throws MissingResourcesException{
+        if(imageWriter == null)
+            throw new MissingResourcesException("imageWriter is not initialized");
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+        //for each pixel
+        //if the pixel index is a multiple of the interval
+        //print the pixel
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++){
+                if(i % interval == 0 || j % interval == 0)
+                    imageWriter.writePixel(j, i, color);
+            }
+        }
+    }
+
+    /**
+     * write the image to the file
+     * @throws IllegalArgumentException if imageWriter is not initialized
+     */
+    public void writeToImage() throws MissingResourcesException{
+        if(imageWriter == null)
+            throw new MissingResourcesException("imageWriter is not initialized");
+        imageWriter.writeToImage();
+    }
+
     /**
      * construct a ray through a pixel
      * @param nX number of pixels in x axis
@@ -106,5 +194,14 @@ public class Camera {
         //ray direction
         Vector vIJ = pIJ.subtract(p0);
         return new Ray(p0, vIJ);
+    }
+
+    /**
+     * write the image to the file
+     * @throws MissingResourcesException if imageWriter is not initialized
+     */
+    public class MissingResourcesException extends Throwable {
+        public MissingResourcesException(String imageWriterIsNotInitialized) {
+        }
     }
 }

@@ -32,10 +32,7 @@ public class Geometries implements Intersectable {
             this.geometries.add(i);
         }
     }
-    /**
-     * @param ray the ray that intersect with the geometry
-     * @return list of points that the ray intersect with the geometry
-     */
+
     @Override
     public List<Point> findIntersections(Ray ray) {
         List<Point> temp;
