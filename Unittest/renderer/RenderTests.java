@@ -4,6 +4,7 @@ import geometries.Sphere;
 import geometries.Triangle;
 import lighting.AmbientLight;
 import org.junit.jupiter.api.Test;
+import parser.SceneDescriptor;
 import primitives.Color;
 import primitives.Double3;
 import primitives.Point;
@@ -81,12 +82,16 @@ public class RenderTests {
 
     /** Test for XML based scene - for bonus */
     @Test
-    public void basicRenderXml() {
+    public void basicRenderXml(){
         Scene  scene  = new Scene("XML Test scene");
         // enter XML file name and parse from XML file into scene object
         // using the code you added in appropriate packages
         // ...
         // NB: unit tests is not the correct place to put XML parsing code
+        String filePath = "basicRenderTestTwoColors";
+        SceneDescriptor sceneDescriptor = new SceneDescriptor();
+        sceneDescriptor.InitializeFromXMLstring(filePath);
+        sceneDescriptor.loadScene(scene);
 
         Camera camera = new Camera(new Point(0,0,0), new Vector(0, 0, -1), new Vector(0, 1, 0))     //
                 .setVPDistance(100)                                                                //
