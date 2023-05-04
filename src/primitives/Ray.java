@@ -79,17 +79,25 @@ public class Ray {
                 '}';
     }
 
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public Point getPoint(double t){
         return this.p0.add(this.dir.scale(t));
     }
-
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public Point findClosestPoint(List<Point> l){
         if(l == null || l.isEmpty())
             return null;
 
         Point closestPoint = l.get(0);
+        double d = p0.distance(closestPoint);
         for (Point p : l) {
-            if (this.p0.distance(p) < p0.distance(closestPoint)) {
+            if (this.p0.distance(p) < d) {
                 closestPoint = p;
             }
         }

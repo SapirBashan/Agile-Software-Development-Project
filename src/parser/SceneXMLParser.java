@@ -16,6 +16,10 @@ public class SceneXMLParser {
         return SaxHndler;
     }
 
+    /**
+     * Constructor
+     * @param fileName
+     */
     public SceneXMLParser(String fileName){
         try {
             //Create file object.

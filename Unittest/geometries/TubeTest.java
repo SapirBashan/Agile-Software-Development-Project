@@ -419,9 +419,6 @@ class TubeTest {
             result = tube2.findIntersections(ray);
             assertNull(result, "Bad intersections");
         }
-
-
-
 }
 
 
