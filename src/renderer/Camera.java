@@ -103,7 +103,7 @@ public class Camera {
      * @throws IllegalArgumentException if imageWriter or rayTracer are not initialized
      * @throws IllegalArgumentException if the width or height are not initialized
      */
-    public void renderImage() throws UnsupportedOperationException{
+    public Camera renderImage() throws UnsupportedOperationException{
 
         try {
             if (imageWriter == null) {
@@ -127,6 +127,8 @@ public class Camera {
         }catch (MissingResourceException e){
             throw new UnsupportedOperationException();
         }
+
+        return this;
     }
 
     /**
