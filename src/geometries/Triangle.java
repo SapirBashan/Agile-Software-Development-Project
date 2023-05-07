@@ -25,12 +25,12 @@ public class Triangle extends Polygon{
      * @return list of points that the ray intersect with the geometry
      */
     @Override
-    public List<Point> findIntersections(Ray ray){
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
         //check if the ray intersect with the plane of the triangle
-        List<Point> result = plane.findIntersections(ray);
+        List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray);
         if(result == null)
            return null;
-        Point p = result.get(0);
+        Point p = result.get(0).point;
         //check if the point is inside the triangle
         //if the point is on the same side of the triangle's edges, it is inside the triangle
         //if the point is on the edge of the triangle, it is inside the triangle
@@ -48,6 +48,6 @@ public class Triangle extends Polygon{
             return null;
         }
 
-        return result;
+        return List.of(new GeoPoint(this,p));
     }
 }

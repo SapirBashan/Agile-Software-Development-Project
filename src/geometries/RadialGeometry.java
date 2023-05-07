@@ -4,7 +4,7 @@ package geometries;
  * The RadialGeometry abstract class represents a geometry with a radial characteristic,
  * such as a sphere or cylinder, that is defined by a radius value.
  */
-abstract class RadialGeometry implements Geometry{
+abstract class RadialGeometry extends Geometry{
 
     /** The radius value of the geometry. */
     protected final double radius;

@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 /** Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
  * @author Dan */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
 
     /** List of polygon's vertices */
     protected final List<Point> vertices;
@@ -89,13 +89,13 @@ public class Polygon implements Geometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntersections(Ray ray){
-        List<Point> result = plane.findIntersections(ray);
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+        List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray);
 
         if(result == null)
             return null;
 
-        Point p = result.get(0);
+        Point p = result.get(0).point;
         List<Vector> vecs = new LinkedList<>();
 
         // check if the point is inside the polygon
@@ -121,6 +121,6 @@ public class Polygon implements Geometry {
             return null;
         }
 
-        return result;
+        return List.of(new GeoPoint(this,p));
     }
 }

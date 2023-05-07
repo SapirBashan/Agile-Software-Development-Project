@@ -8,14 +8,14 @@ import primitives.Ray;
  * RayTracerBase is an abstract class that represents a ray tracer base.
  */
 public abstract class RayTracerBase {
-    protected Scene myScene;
+    protected Scene scene;
 
     /**
      * Constructor for RayTracerBase class.
      * @param myScene the scene
      */
     public RayTracerBase(Scene myScene) {
-        this.myScene = myScene;
+        this.scene = myScene;
     }
     /**
      * Trace ray.
@@ -23,7 +23,5 @@ public abstract class RayTracerBase {
      * @return the color
      */
     public abstract Color traceRay(Ray ray);
-
-
 
 }

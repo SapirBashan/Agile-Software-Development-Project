@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
  * A plane is defined by a point on the plane and a normal vector
  * perpendicular to the plane.
  */
-public class Plane implements Geometry{
+public class Plane extends Geometry{
     /** The point on the plane. */
     private final Point q0;
 
@@ -87,7 +87,7 @@ public class Plane implements Geometry{
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         double nv, t;
         try {
             nv = this.normal.dotProduct(ray.getDir());
@@ -102,7 +102,7 @@ public class Plane implements Geometry{
         }
         if(t > 0) {
             Point p = ray.getPoint(t);
-            return List.of(p);
+            return List.of(new GeoPoint(this, p));
         }
 
         return null;

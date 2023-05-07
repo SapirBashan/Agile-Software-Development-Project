@@ -57,8 +57,9 @@ public class SaxHandler extends DefaultHandler{
             // get tag's attribute by name
             String colorStr = attributes.getValue("color");
             color = strToColor(colorStr);
+            double k = parseDouble(attributes.getValue("k"));
 
-            this.ambientLight = new AmbientLight(color, new Double3(1));
+            this.ambientLight = new AmbientLight(color, new Double3(k));
         }
 
         if (qName.equalsIgnoreCase("sphere")) {

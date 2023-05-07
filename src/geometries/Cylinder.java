@@ -63,23 +63,23 @@ public class Cylinder extends Tube{
 
 
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
         //P1 and P2 in the cylinder, the center of the bottom and upper bases
         Point p1 = axisRay.getP0();
         Point p2 = axisRay.getTargetPoint(height);
         Vector VectorRay = axisRay.getDir();
 
-        List<Point> list = super.findIntersections(ray);
+        List<GeoPoint> list = super.findGeoIntersectionsHelper(ray);
 
         //the intersections with the cylinder
-        List<Point> result = new LinkedList<>();
+        List<GeoPoint> result = new LinkedList<>();
 
         //Step 1 - checking if the intersections with the tube are points on the cylinder
         if (list != null) {
-            for (Point p : list) {
-                if (VectorRay.dotProduct(p.subtract(p1)) > 0 && VectorRay.dotProduct(p.subtract(p2)) < 0)
-                    result.add(0, p);
+            for (GeoPoint gp : list) {
+                if (VectorRay.dotProduct(gp.point.subtract(p1)) > 0 && VectorRay.dotProduct(gp.point.subtract(p2)) < 0)
+                    result.add(0, gp);
             }
         }
 
@@ -96,23 +96,23 @@ public class Cylinder extends Tube{
             // intersection with the bases:
 
             //intersections with the bottom bases
-            list = bottomBase.findIntersections(ray);
+            list = bottomBase.findGeoIntersectionsHelper(ray);
 
             if (list != null) {
-                p = list.get(0);
+                p = list.get(0).point;
                 //checking if the intersection is on the cylinder base
                 if (p.distanceSquared(p1) < radius * radius)
-                    result.add(p);
+                    result.add(new GeoPoint(this,p));
             }
 
             //intersections with the upper bases
-            list = upperBase.findIntersections(ray);
+            list = upperBase.findGeoIntersectionsHelper(ray);
 
             if (list != null) {
-                p = list.get(0);
+                p = list.get(0).point;
                 //checking if the intersection is on the cylinder base
                 if (p.distanceSquared(p2) < radius * radius)
-                    result.add(p);
+                    result.add(new GeoPoint(this,p));
             }
         }
         //return null if there are no intersections.
