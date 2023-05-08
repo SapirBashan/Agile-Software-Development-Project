@@ -8,6 +8,7 @@ import scene.Scene;
 import static primitives.Util.alignZero;
 
 public class RayTracerBasic extends RayTracerBase{
+
     /**
      * Constructor for RayTracerBase class.
      * @param scene
@@ -54,8 +55,8 @@ public class RayTracerBasic extends RayTracerBase{
     }
 
     private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v){
-        Vector r = l.subtract(n.scale(2*nl));
-        return material.kS.scale(Math.pow(Math.max(0.0, (v.scale(-1.0)).dotProduct(r)), material.nShininess));
+        Vector r = n.scale(2*nl).subtract(l);
+        return material.kS.scale(Math.pow(Math.max(0.0, (v.dotProduct(r))), material.nShininess));
     }
 
 }
