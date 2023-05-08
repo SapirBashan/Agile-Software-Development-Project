@@ -140,10 +140,8 @@ public class Camera {
      * @return the ray through the pixel
      */
     private Color castRay(int nX, int nY, int j, int i){
-        //construct a ray through the pixel
-        Ray ray = constructRay(nX, nY, j, i);
         //trace the ray
-        return rayTracer.traceRay(ray);
+        return rayTracer.traceRay(constructRay(nX, nY, j, i));
     }
 
     /**
