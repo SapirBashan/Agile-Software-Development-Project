@@ -7,6 +7,7 @@ import primitives.Vector;
 public class PointLight extends Light implements LightSource{
 
     private Point position;
+
     private double kC = 1, kL = 0, kQ = 0;
 
     public PointLight(Color intensity, Point position) {
@@ -34,6 +35,11 @@ public class PointLight extends Light implements LightSource{
     public Color getIntensity(Point p) {
         double d = p.distance(this.position);
         return super.getIntensity().scale(1.0/(kC + kL*d + kQ * d*d));
+    }
+
+    @Override
+    public double getDistance(Point p) {
+        return p.distance(this.position);
     }
 
     @Override

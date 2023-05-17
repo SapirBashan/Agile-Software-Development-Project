@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="stage 6 with the bonus, without javadoc">
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="start of stage 5 stage 3 and test">
+      <change afterPath="$PROJECT_DIR$/Unittest/renderer/ShadowTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/renderer/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/renderer/LightsTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,9 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
-        <option value="HTML File" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -39,7 +40,6 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -49,7 +49,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="9fcddbb0-d81a-4450-ac2d-534fc04de3ef" />
+        <option name="accountId" value="f2940d30-abb7-4aff-9a0c-8ab6a3901b63" />
         <option name="url" value="https://github.com/SapirBashan/ISE5783_3368_0044.git" />
       </UrlAndAccount>
     </option>
@@ -68,7 +68,6 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
@@ -87,9 +86,6 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yshsh\IdeaProjects\ISE5783_3368_0044" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="renderer" />
     </key>
@@ -99,7 +95,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5783_3368_0044">
+  <component name="RunManager" selected="JUnit.ShadowTests.sphereTriangleSpot2">
     <configuration name="All in ISE5783_3368_0044" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <option name="PACKAGE_NAME" value="" />
@@ -108,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests.sphereSpotSharp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShadowTests.sphereTriangleMove1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
         <pattern>
@@ -117,14 +113,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
-      <option name="METHOD_NAME" value="sphereSpotSharp" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="METHOD_NAME" value="sphereTriangleMove1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests.trianglesMultipleLightsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShadowTests.sphereTriangleMove2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
         <pattern>
@@ -133,14 +129,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
-      <option name="METHOD_NAME" value="trianglesMultipleLightsTest" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="METHOD_NAME" value="sphereTriangleMove2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests.trianglesSpot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShadowTests.sphereTriangleSpot1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
         <pattern>
@@ -149,14 +145,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
-      <option name="METHOD_NAME" value="trianglesSpot" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="METHOD_NAME" value="sphereTriangleSpot1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightsTests.trianglesSpotSharp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShadowTests.sphereTriangleSpot2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
         <pattern>
@@ -165,8 +161,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.LightsTests" />
-      <option name="METHOD_NAME" value="trianglesSpotSharp" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="METHOD_NAME" value="sphereTriangleSpot2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -174,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShadowTests.sphereTriangleSpot2" />
+        <item itemvalue="JUnit.ShadowTests.sphereTriangleSpot1" />
+        <item itemvalue="JUnit.ShadowTests.sphereTriangleMove2" />
+        <item itemvalue="JUnit.ShadowTests.sphereTriangleMove1" />
         <item itemvalue="JUnit.All in ISE5783_3368_0044" />
-        <item itemvalue="JUnit.LightsTests.trianglesSpot" />
-        <item itemvalue="JUnit.LightsTests.sphereSpotSharp" />
-        <item itemvalue="JUnit.LightsTests.trianglesSpotSharp" />
-        <item itemvalue="JUnit.LightsTests.trianglesMultipleLightsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -338,42 +334,7 @@
       <option name="project" value="LOCAL" />
       <updated>1682941732005</updated>
     </task>
-    <task id="LOCAL‎-00022" summary="stage 5 without bonus">
-      <created>1683029933920</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL‎-00022" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1683029933920</updated>
-    </task>
-    <task id="LOCAL‎-00023" summary="only for saving">
-      <created>1683191088828</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL‎-00023" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1683191088828</updated>
-    </task>
-    <task id="LOCAL‎-00024" summary="stage 5 with bonus">
-      <created>1683191995528</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL‎-00024" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1683191995528</updated>
-    </task>
-    <task id="LOCAL‎-00025" summary="part 1 of stage 6">
-      <created>1683447931064</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL‎-00025" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1683447931064</updated>
-    </task>
-    <task id="LOCAL‎-00026" summary="stage 6 without the bonus">
-      <created>1683470009584</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL‎-00026" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1683470009584</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,7 +342,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -389,6 +362,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add a few paceges" />
     <MESSAGE value="java docs style documentation on all of the code" />
     <MESSAGE value="merge" />
     <MESSAGE value="final commit" />
@@ -408,13 +382,7 @@
     <MESSAGE value="start of stage 5" />
     <MESSAGE value="start of stage 5 stage 3" />
     <MESSAGE value="start of stage 5 stage 3 and test" />
-    <MESSAGE value="stage 5 without bonus" />
-    <MESSAGE value="only for saving" />
-    <MESSAGE value="stage 5 with bonus" />
-    <MESSAGE value="part 1 of stage 6" />
-    <MESSAGE value="stage 6 without the bonus" />
-    <MESSAGE value="stage 6 with the bonus, without javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="stage 6 with the bonus, without javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="start of stage 5 stage 3 and test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
