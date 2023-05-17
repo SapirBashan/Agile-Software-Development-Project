@@ -78,8 +78,10 @@ public class Cylinder extends Tube{
         //Step 1 - checking if the intersections with the tube are points on the cylinder
         if (list != null) {
             for (GeoPoint gp : list) {
-                if (VectorRay.dotProduct(gp.point.subtract(p1)) > 0 && VectorRay.dotProduct(gp.point.subtract(p2)) < 0)
-                    result.add(0, gp);
+                try {
+                    if (VectorRay.dotProduct(gp.point.subtract(p1)) > 0 && VectorRay.dotProduct(gp.point.subtract(p2)) < 0)
+                        result.add(0, gp);
+                } catch (IllegalArgumentException e) {}
             }
         }
 
