@@ -27,9 +27,9 @@ public class ReflectionRefractionTests {
                 .setVPSize(150, 150).setVPDistance(1000);
 
         scene.geometries.add( //
-                new Sphere(50d,new Point(0, 0, -50)).setEmission(new Color(BLUE)) //
+                new Sphere(50d, new Point(0, 0, -50)).setEmission(new Color(BLUE)) //
                         .setMaterial(new Material().setkD(0.4).setkS(0.3).setShininess(100).setkT(0.3)),
-                new Sphere( 25d ,new Point(0, 0, -50)).setEmission(new Color(RED)) //
+                new Sphere(25d, new Point(0, 0, -50)).setEmission(new Color(RED)) //
                         .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(100)));
         scene.lights.add( //
                 new SpotLight(new Color(1000, 600, 0), new Point(-100, -100, 500), new Vector(-1, -1, -2)) //
@@ -40,6 +40,7 @@ public class ReflectionRefractionTests {
                 .renderImage() //
                 .writeToImage();
     }
+
 
     /** Produce a picture of a sphere lighted by a spot light */
     @Test

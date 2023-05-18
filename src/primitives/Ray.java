@@ -14,6 +14,11 @@ import static primitives.Util.isZero;
 public class Ray {
 
     /**
+     * The delta for the shadow rays.
+     */
+    private static final double DELTA = 0.1;
+
+    /**
      * The origin point of the ray.
      */
     private final Point p0;
@@ -38,6 +43,13 @@ public class Ray {
      * @param dir the direction vector of the ray
      */
     public Ray(Point p0, Vector dir) {
+        this.p0 = p0;
+        this.dir = dir.normalize();
+    }
+
+    public Ray(Point p, Vector dir, Vector n){
+        Vector epsVector = n.scale(n.dotProduct(dir) > 0 ? DELTA : -DELTA);
+        Point p0 = p.add(epsVector);
         this.p0 = p0;
         this.dir = dir.normalize();
     }
