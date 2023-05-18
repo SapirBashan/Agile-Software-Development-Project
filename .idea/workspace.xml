@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="stage 6 with the bonus, without javadoc">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unittest/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/renderer/ReflectionRefractionTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="comit">
+      <change beforePath="$PROJECT_DIR$/Unittest/renderer/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/renderer/LightsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +35,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -342,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684328872278</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="comit">
+      <created>1684419258493</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684419258493</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -380,7 +385,8 @@
     <MESSAGE value="start of stage 5 stage 3 and test" />
     <MESSAGE value="7 stage 1 done" />
     <MESSAGE value="7 stage 2 almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="7 stage 2 almost done" />
+    <MESSAGE value="comit" />
+    <option name="LAST_COMMIT_MESSAGE" value="comit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

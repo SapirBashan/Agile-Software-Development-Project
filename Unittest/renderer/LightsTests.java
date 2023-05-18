@@ -190,6 +190,7 @@ public class LightsTests {
                 .writeToImage();
     }
 
+    /** Produce a picture of two triangles lighted by a directional light */
     @Test
     void trianglesMultipleLightsTest() {
         scene2.geometries.add(triangle1, triangle2);
