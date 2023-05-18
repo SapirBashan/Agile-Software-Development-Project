@@ -33,7 +33,7 @@ public class Geometries extends Intersectable {
     }
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         List<GeoPoint> temp;
         List<GeoPoint> result = null;
         for(Intersectable i : geometries){

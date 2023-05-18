@@ -63,7 +63,7 @@ public class Cylinder extends Tube{
 
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
         //P1 and P2 in the cylinder, the center of the bottom and upper bases
         Point p1 = axisRay.getP0();

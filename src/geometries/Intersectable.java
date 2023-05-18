@@ -6,6 +6,10 @@ import primitives.Ray;
 
 import java.util.List;
 
+/**
+ * The Intersectable interface represents an intersectable geometry in a three-dimensional space.
+ * An intersectable geometry is defined by a findIntersections method.
+ */
 public abstract class Intersectable {
 
 
@@ -36,6 +40,10 @@ public abstract class Intersectable {
         }
     }
 
+    /**
+     * @param ray the ray that intersect with the geometry
+     * @return list of points that the ray intersect with the geometry
+     */
     public final List<Point> findIntersections(Ray ray){
         var geoList = findGeoIntersectionsHelper(ray);
         if(geoList == null){
@@ -45,5 +53,17 @@ public abstract class Intersectable {
         return geoList.stream().map(gp -> gp.point).toList();
     }
 
+    /**
+     * @param ray the ray that intersect with the geometry
+     * @return list of points that the ray intersect with the geometry
+     */
+    public final List<GeoPoint> findGeoIntersections(Ray ray){
+        return findGeoIntersectionsHelper(ray);
+    }
+
+    /**
+     * @param ray the ray that intersect with the geometry
+     * @return list of points that the ray intersect with the geometry
+     */
     protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 }

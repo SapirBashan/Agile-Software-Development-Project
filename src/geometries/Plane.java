@@ -87,7 +87,7 @@ public class Plane extends Geometry{
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         double nv, t;
         try {
             nv = this.normal.dotProduct(ray.getDir());

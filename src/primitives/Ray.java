@@ -47,6 +47,12 @@ public class Ray {
         this.dir = dir.normalize();
     }
 
+     /**
+     * Constructs a new Ray object with the given origin point and direction vector.
+     * @param p the origin point of the ray
+     * @param dir the direction vector of the ray
+     * @param n the normal vector of the geometry
+     */
     public Ray(Point p, Vector dir, Vector n){
         Vector epsVector = n.scale(n.dotProduct(dir) > 0 ? DELTA : -DELTA);
         Point p0 = p.add(epsVector);
@@ -92,6 +98,10 @@ public class Ray {
                 ", dir=" + dir +
                 '}';
     }
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public Point getPoint(double t){
         try {
             return this.p0.add(this.dir.scale(t));
@@ -100,11 +110,18 @@ public class Ray {
         }
     }
 
-
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public Point findClosestPoint(List<Point> points) {
         return points == null || points.isEmpty() ? null
                 : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
     }
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections){
         if(intersections == null || intersections.isEmpty())
             return null;

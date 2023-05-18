@@ -54,7 +54,7 @@ public class Sphere extends RadialGeometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Point p1 = null;
         Point p2 = null;
         List<GeoPoint> list = null;

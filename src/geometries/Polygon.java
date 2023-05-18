@@ -89,7 +89,7 @@ public class Polygon extends Geometry {
      * @param ray the ray that intersect with the geometry
      * @return list of points that the ray intersect with the geometry
      */
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
         List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray);
 
         if(result == null)
