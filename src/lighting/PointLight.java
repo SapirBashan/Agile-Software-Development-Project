@@ -7,16 +7,24 @@ import primitives.Vector;
 public class PointLight extends Light implements LightSource{
     //this field is for the constructor with two parameter color and point
     private Point position;
+    private double size;
 
     private double kC = 1, kL = 0, kQ = 0;
+
+    public PointLight(Color intensity, Point position) {
+        super(intensity);
+        this.position = position;
+        this.size = 0;
+    }
 
     /**
      * @param intensity the intensity of the light
      * @param position the position of the light
      */
-    public PointLight(Color intensity, Point position) {
+    public PointLight(Color intensity, Point position, double size) {
         super(intensity);
         this.position = position;
+        this.size = size;
     }
 
 
@@ -32,6 +40,11 @@ public class PointLight extends Light implements LightSource{
 
     public PointLight setKQ(double kQ) {
         this.kQ = kQ;
+        return this;
+    }
+
+    public PointLight setSize(double size){
+        this.size = size;
         return this;
     }
 

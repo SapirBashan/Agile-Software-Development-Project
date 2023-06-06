@@ -9,7 +9,7 @@ import java.util.List;
 
 
 /**
- * Represents a cylinder in 3D space.
+ * Represents a cylinder in 3D space of the picture.
  */
 public class Cylinder extends Tube{
     private final double height;
