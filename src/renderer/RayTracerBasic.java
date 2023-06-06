@@ -24,6 +24,21 @@ public class RayTracerBasic extends RayTracerBase{
     private static final double MIN_CALC_COLOR_K = 0.001;
 
     /**
+     * The delta for the shadow rays.
+     */
+    private int amountOfRays = 1;
+
+    /**
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
+     */
+    public RayTracerBasic setAmountOfRays(int amountOfRays) {
+        this.amountOfRays = amountOfRays;
+        return this;
+    }
+
+    /**
      * Constructor for RayTracerBase class.
      * @param scene The scene.
      */
@@ -49,9 +64,20 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The color of the point.
      */
     private Color calcColor(Intersectable.GeoPoint closestPoint, Ray ray) {
+        RayBeam beam = new RayBeam(ray,closestPoint.point,amountOfRays);
+        List<Ray> rays = beam.getBeam();
+
+        Color color = Color.BLACK;
+
+        for (Ray r: rays){
+            color = color.add(calcColor(closestPoint, r, MAX_CALC_COLOR_LEVEL, INITIAL_K));
+        }
+
+        return color.scale(1.0/rays.size());
+
         //this calculation is for the formula of the color
         //return the color of the point
-        return calcColor(closestPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K).add(scene.ambientLight.getIntensity());
+        //return calcColor(closestPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K).add(scene.ambientLight.getIntensity());
     }
 
     /**

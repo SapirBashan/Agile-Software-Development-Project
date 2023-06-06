@@ -74,6 +74,8 @@ public class Ray {
         return getP0();
     }
 
+
+
     /**
      * Checks if this Ray object is equal to another object.
      * @param o the object to compare this Ray object to
