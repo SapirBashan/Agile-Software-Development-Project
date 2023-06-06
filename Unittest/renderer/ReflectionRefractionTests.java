@@ -3,6 +3,8 @@
  */
 package renderer;
 
+import geometries.Cylinder;
+import geometries.Polygon;
 import geometries.Sphere;
 import geometries.Triangle;
 import lighting.AmbientLight;
@@ -107,6 +109,87 @@ public class ReflectionRefractionTests {
 
 
     @Test
+    public void pictureForBonus() {
+        Color KREAM = new Color(255,253,208);
+        Material Wall = new Material().setkD(0.05).setkS(0.05).setShininess(2).setkT(1);
+
+        Camera camera = new Camera(new Point(0, 25, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+                .setVPSize(200, 200).setVPDistance(1000);
+
+        scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
+
+        scene.geometries.add( //
+                new Polygon(new Point(-100,-20, 500), new Point(-100,-20, -500),new Point(100,-20, -500),new Point(100,-20, 500))//
+                        .setMaterial(Wall)
+                        .setEmission(new Color(GRAY)),//
+                new Polygon(new Point(-100,100, 500), new Point(-100,100, -500),new Point(100,100, -500),new Point(100,100, 500))//
+                        .setMaterial(Wall)
+                        .setEmission(new Color(PINK)),//
+                new Polygon(new Point(-100,100, -499), new Point(100,100, -499),new Point(100,-20, -499),new Point(-100,-20, -499))//
+                        .setMaterial(Wall)
+                        .setEmission(new Color(pink)),//
+                new Polygon(new Point(-100,100, -499), new Point(-100,100, 500),new Point(-100,-20, 500),new Point(-100,-20, -499))//
+                        .setMaterial(Wall)
+                        .setEmission(new Color(PINK)),//
+                new Polygon(new Point(100,100, -499), new Point(100,100, 500),new Point(100,-20, 500),new Point(100,-20, -499))//
+                        .setMaterial(Wall)
+                        .setEmission(KREAM)
+                        .setEmission(new Color(PINK)),//
+
+                //Mirror
+                new Polygon(new Point(-20,50, -498), new Point(20,50, -498),new Point(20,5, -498),new Point(-20,5, -498))//
+                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(5).setkR(1)),//
+                new Polygon(new Point(-20,50, -498), new Point(20,50, -498),new Point(20,5, -498),new Point(-20,5, -498))//
+                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(60).setkR(0.9))
+                        .setEmission(new Color(pink)), //
+
+                // Light
+                new Sphere(3d,new Point(0, 90, 0)).setEmission(new Color(YELLOW))
+                        .setMaterial(new Material().setkD(0.4).setkS(0.3).setShininess(100).setkT(0.3)),//
+                new Cylinder(0.2,new Ray(new Point(0, 90, 0), new Vector(0,1,0)),58)//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(GRAY)),//
+
+                // Table
+
+                new Polygon(new Point(-40,6, -499), new Point(40,6, -499),new Point(40,4, -400),new Point(-40,4, -400))//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(BLUE)),//
+                new Cylinder(2,new Ray(new Point(-38,4, -497), new Vector(0,-1,0)),25)//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(BLUE)),//
+                new Cylinder(2,new Ray(new Point(38,4, -497), new Vector(0,-1,0)),25)//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(BLUE)),//
+                new Cylinder(2,new Ray(new Point(38,4, -402), new Vector(0,-1,0)),25)//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(BLUE)),//
+                new Cylinder(2,new Ray(new Point(-38,4, -402), new Vector(0,-1,0)),25)//
+                        .setMaterial(new Material().setkR(0).setkD(0.5).setkS(0.5).setShininess(5))
+                        .setEmission(new Color(BLUE)),//
+                // On the Table
+                new Sphere(4d,new Point(9, 9, -460)).setEmission(new Color(RED))
+                        .setMaterial(new Material().setkD(0.1).setkS(0.25).setShininess(30).setkT(0.7)),//
+                new Sphere(1d,new Point(9, 9, -460)).setEmission(new Color(BLUE))
+                        .setMaterial(new Material().setkD(0.1).setkS(0.25).setShininess(30).setkT(0.2)),//
+                new Sphere(20d,new Point(-70, -20, -100)).setEmission(new Color(GREEN))
+                        .setMaterial(new Material().setkD(0.1).setkS(0.25).setShininess(30).setkT(0.7))
+
+
+        );
+
+        scene.lights.add(new PointLight(new Color(WHITE), new Point(0, 80, 0)) //
+                .setKL(4E-5).setKQ(2E-7));
+
+
+        ImageWriter imageWriter = new ImageWriter("pictureForBonus", 500, 500);
+        camera.setImageWriter(imageWriter) //
+                .setRayTracer(new RayTracerBasic(scene)) //
+                .renderImage() //
+                .writeToImage();
+   }
+
+    @Test
     public void fourObjects() {
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setVPSize(200, 200).setVPDistance(1000);
@@ -118,9 +201,9 @@ public class ReflectionRefractionTests {
                 new Triangle(new Point(-100, -30, 0), new Point(200, 30,30),
                         new Point(75, 75, -150)) //
                         .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(60).setkT(0)), //
-                new Triangle(new Point(-100, 60, -100), new Point(200, 100,30),
-                        new Point(75, 75, -150)) //
-                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(60).setkT(0)), //
+                new Triangle(new Point(-200, 0, -100), new Point(200, 0,-100),
+                        new Point(0, 100, 0)) //
+                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setShininess(60).setkR(1)), //
                 new Sphere(30d,new Point(0, 0, 0)).setEmission(new Color(RED)) //
                         .setMaterial(new Material().setkD(0.1).setkS(0.25).setShininess(30).setkT(0.6)),
                 new Sphere(15d,new Point(0, 0, 0)).setEmission(new Color(BLUE)) //
@@ -139,6 +222,6 @@ public class ReflectionRefractionTests {
                 .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage() //
                 .writeToImage();
-    }
+ }
 
 }
