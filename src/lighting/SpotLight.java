@@ -47,6 +47,7 @@ public class SpotLight extends PointLight implements LightSource{
     //wich I0 is the intensity of the light
     //L is the direction of the light
     //V is the direction of the vector from the light to the point
+    //n is the narrow beam
     //and the calculation of all the paramiters returns the intensity of the light in the point
     @Override
     public Color getIntensity(Point p) {
