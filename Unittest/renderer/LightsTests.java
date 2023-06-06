@@ -175,7 +175,7 @@ public class LightsTests {
                 .renderImage() //
                 .writeToImage(); //
     }
-
+    /** Produce a picture of a sphere lighted by a multiple lights */
     @Test
     void sphereMultipleLightsTest() {
         scene1.geometries.add(sphere);
