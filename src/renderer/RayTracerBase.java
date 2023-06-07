@@ -10,6 +10,35 @@ import primitives.Ray;
 public abstract class RayTracerBase {
     protected Scene scene;
 
+
+    /**
+     * The delta for the shadow rays.
+     */
+    protected int rayNumReflection = 1;
+    protected int rayNumRefraction = 1;
+    protected int rayNumAntiAliasing = 1;
+
+    /**
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
+     */
+    abstract protected RayTracerBasic setRayNumReflection(int amountOfRays);
+
+    /**
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
+     */
+    abstract protected RayTracerBasic setRayNumRefraction(int amountOfRays);
+
+    /**
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
+     */
+    abstract protected RayTracerBasic setRayNumAntiAliasing(int amountOfRays);
+
     /**
      * Constructor for RayTracerBase class.
      * @param myScene the scene
@@ -17,6 +46,19 @@ public abstract class RayTracerBase {
     public RayTracerBase(Scene myScene) {
         this.scene = myScene;
     }
+
+    public int getRayNumReflection() {
+        return rayNumReflection;
+    }
+
+    public int getRayNumRefraction() {
+        return rayNumRefraction;
+    }
+
+    public int getRayNumAntiAliasing() {
+        return rayNumAntiAliasing;
+    }
+
     /**
      * Trace ray.
      * @param ray the ray

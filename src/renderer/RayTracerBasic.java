@@ -24,17 +24,32 @@ public class RayTracerBasic extends RayTracerBase{
     private static final double MIN_CALC_COLOR_K = 0.001;
 
     /**
-     * The delta for the shadow rays.
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
      */
-    private int amountOfRays = 1;
+    public RayTracerBasic setRayNumReflection(int amountOfRays) {
+        this.rayNumReflection = amountOfRays;
+        return this;
+    }
 
     /**
      * Sets the amount of rays.
      * @param amountOfRays The amount of rays.
      * @return The RayTracerBasic object.
      */
-    public RayTracerBasic setAmountOfRays(int amountOfRays) {
-        this.amountOfRays = amountOfRays;
+    public RayTracerBasic setRayNumRefraction(int amountOfRays) {
+        this.rayNumRefraction = amountOfRays;
+        return this;
+    }
+
+    /**
+     * Sets the amount of rays.
+     * @param amountOfRays The amount of rays.
+     * @return The RayTracerBasic object.
+     */
+    public RayTracerBasic setRayNumAntiAliasing(int amountOfRays) {
+        this.rayNumAntiAliasing = amountOfRays;
         return this;
     }
 
@@ -64,20 +79,9 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The color of the point.
      */
     private Color calcColor(Intersectable.GeoPoint closestPoint, Ray ray) {
-        RayBeam beam = new RayBeam(ray,closestPoint.point,amountOfRays);
-        List<Ray> rays = beam.getBeam();
-
-        Color color = Color.BLACK;
-
-        for (Ray r: rays){
-            color = color.add(calcColor(closestPoint, r, MAX_CALC_COLOR_LEVEL, INITIAL_K));
-        }
-
-        return color.scale(1.0/rays.size());
-
         //this calculation is for the formula of the color
         //return the color of the point
-        //return calcColor(closestPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K).add(scene.ambientLight.getIntensity());
+        return calcColor(closestPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K).add(scene.ambientLight.getIntensity());
     }
 
     /**
@@ -90,11 +94,13 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The color of the point.
      */
     private Color calcColor(Intersectable.GeoPoint intersection, Ray ray, int level, Double3 k) {
+
         //this is a recursive function that calculates the color of the point
         //if the level is 0 or the k is smaller than the minimum k
         //return the black color
         //else calculate the local effects and the global effects
         Color color = calcLocalEffects(intersection, ray, k);
+
         return 1 == level ? color : color.add(calcGlobalEffects(intersection, ray, level, k));
     }
 
@@ -177,8 +183,31 @@ public class RayTracerBasic extends RayTracerBase{
         Vector n = gp.geometry.getNormal(gp.point);
         Material material = gp.geometry.getMaterial();
         //if the transparency of the geometry is 0
-        return calcGlobalEffects(constructReflectedRay(gp, v, n),level, k, material.kR)//
-         .add(calcGlobalEffects(constructRefractedRay(gp, v, n),level, k, material.kT));
+
+        Ray reflectRay = constructReflectedRay(gp, v, n);
+        Color reflectColor = Color.BLACK;
+        Ray refractRay = constructRefractedRay(gp, v, n);
+        Color refractColor = Color.BLACK;
+
+        Blackboard tarArea = new Blackboard(reflectRay, this.rayNumReflection);
+        RayBeam beam = new RayBeam(reflectRay, tarArea);
+        List<Ray> rays = beam.getBeam();
+
+        for(Ray r : rays){
+            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/rays.size()));
+        }
+
+        tarArea = new Blackboard(refractRay, this.rayNumRefraction);
+        beam = new RayBeam(refractRay, tarArea);
+        rays = beam.getBeam();
+
+        for(Ray r : rays){
+            refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)).scale(1.0/rays.size()));
+        }
+
+        return reflectColor.add(refractColor);
+       // return calcGlobalEffects(constructReflectedRay(gp, v, n),level, k, material.kR)//
+         //.add(calcGlobalEffects(constructRefractedRay(gp, v, n),level, k, material.kT));
     }
 
     /**

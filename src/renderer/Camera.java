@@ -1,6 +1,8 @@
 package renderer;
 
 import primitives.*;
+
+import java.util.List;
 import java.util.MissingResourceException;
 
 /**
@@ -140,8 +142,20 @@ public class Camera {
      * @return the ray through the pixel
      */
     private Color castRay(int nX, int nY, int j, int i){
+        double wid = Math.atan(((height/nX)/2.0)/distance);
+        Blackboard tarArea = new Blackboard(constructRay(nX, nY, j, i), rayTracer.rayNumAntiAliasing)
+                .setAngle(wid).setLength(distance);
+        RayBeam beam = new RayBeam(constructRay(nX, nY, j, i), tarArea);
+        List<Ray> rays = beam.getBeam();
+
+
+        Color color = Color.BLACK;
+        for(Ray r : rays){
+            color = color.add(rayTracer.traceRay(r).scale(1.0/rays.size()));
+        }
+
         //trace the ray
-        return rayTracer.traceRay(constructRay(nX, nY, j, i));
+        return color;
     }
 
     /**

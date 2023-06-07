@@ -157,7 +157,7 @@ public class LightsTests {
 
         ImageWriter imageWriter = new ImageWriter("lightSphereSpotSharp", 500, 500);
         camera1.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene1)) //
+                .setRayTracer(new RayTracerBasic(scene1).setRayNumAntiAliasing(1000)) //
                 .renderImage() //
                 .writeToImage(); //
     }
