@@ -33,6 +33,11 @@ public class RayTracerBasic extends RayTracerBase{
         return this;
     }
 
+    public RayTracerBasic setAngle(double angle){
+        this.rayAngle = angle;
+        return this;
+    }
+
     /**
      * Sets the amount of rays.
      * @param amountOfRays The amount of rays.
@@ -189,7 +194,7 @@ public class RayTracerBasic extends RayTracerBase{
         Ray refractRay = constructRefractedRay(gp, v, n);
         Color refractColor = Color.BLACK;
 
-        Blackboard tarArea = new Blackboard(reflectRay, this.rayNumReflection);
+        Blackboard tarArea = new Blackboard(reflectRay, this.rayNumReflection).setAngle(this.rayAngle);
         RayBeam beam = new RayBeam(reflectRay, tarArea);
         List<Ray> rays = beam.getBeam();
 
@@ -197,7 +202,7 @@ public class RayTracerBasic extends RayTracerBase{
             reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/rays.size()));
         }
 
-        tarArea = new Blackboard(refractRay, this.rayNumRefraction);
+        tarArea = new Blackboard(refractRay, this.rayNumRefraction).setAngle(this.rayAngle);
         beam = new RayBeam(refractRay, tarArea);
         rays = beam.getBeam();
 

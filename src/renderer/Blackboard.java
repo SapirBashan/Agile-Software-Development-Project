@@ -1,4 +1,4 @@
-package renderer;
+﻿package renderer;
 
 import primitives.Point;
 import primitives.Ray;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Blackboard {
 
     private double length = 700;
-    private double angle = 0.004;
+    private double angle = 0;
     private Ray basicRay;
     private Vector XDirection;
     private Vector YDirection;
