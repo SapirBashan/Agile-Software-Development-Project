@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Blackboard {
 
-    private double length = 1000;
-    private double angle = 0.2;
+    private double length = 700;
+    private double angle = 0.004;
     private Ray basicRay;
     private Vector XDirection;
     private Vector YDirection;
@@ -50,27 +50,27 @@ public class Blackboard {
 
         double XDirectionLength;
         double YDirectionLength;
-        double width = 10/Math.sqrt(amountOfRays-1); //Math.tan(this.angle)*this.length * 2 / Math.sqrt(this.amountOfRays);
+        double width = Math.tan(this.angle)*this.length;
 
-
+/*
         for(int i = 0; i < Math.sqrt(this.amountOfRays - 1) + 1 ; i++){
             for(int j = 0; j < Math.sqrt(this.amountOfRays - 1) + 1 ; j++) {
-                XDirectionLength = (Math.random() - 0.5) * 2 * width;//*width;
+                XDirectionLength = ((Math.random() - 0.5) * 2) * width;//*width;
                 YDirectionLength = (Math.random() - 0.5) * 2 * width;//*width;
                 pixels.add(p.add(XDirection.scale(XDirectionLength + (width * i)))
                         .add(YDirection.scale(YDirectionLength + (width * j))));
             }
         }
+*/
 
 
-        /*
         for(int i = 0; i < this.amountOfRays; i++) {
-            XDirectionLength = (Math.random() - 0.5) * 10;//*width;
-            YDirectionLength = (Math.random() - 0.5) * 10;//*width;
+            XDirectionLength = ((Math.random() - 0.5)*2) * width;//*width;
+            YDirectionLength = ((Math.random() - 0.5)*2) * width;//*width;
             pixels.add(p.add(XDirection.scale(XDirectionLength))
                     .add(YDirection.scale(YDirectionLength)));
         }
-         */
+
         return pixels;
     }
 
