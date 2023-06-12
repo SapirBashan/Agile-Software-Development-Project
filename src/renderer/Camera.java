@@ -121,13 +121,16 @@ public class Camera {
             //for each pixel
             //construct a ray through the pixel
             //trace the ray
-
+/*
             for (int i = 0; i < nX; i++) {
                 for (int j = 0; j < nY; j++) {
                     //trace the ray
                     imageWriter.writePixel(j, i, castRay(nX,nY,j,i));
                 }
             }
+
+
+ */
 
             Pixel.initialize(nY, nX, 1);
             IntStream.range(0, nY).parallel().forEach(i -> {
