@@ -177,8 +177,6 @@ public class ReflectionRefractionTests {
                 new Polygon(new Point(-30,40,0), new Point(-30, 0, 0), new Point(30,0,0),
                         new Point(30,40,0))
                         .setMaterial(new Material().setkD(0.3).setkR(0.2).setkT(0.6).setkS(0.15).setShininess(4))
-
-
         );
 
         scene.lights.add(new PointLight(new Color(WHITE), new Point(0, 80, 0)) //
@@ -191,6 +189,8 @@ public class ReflectionRefractionTests {
                 .renderImage() //
                 .writeToImage();
    }
+
+
 
     @Test
     public void fourObjects() {

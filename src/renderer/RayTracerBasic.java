@@ -23,6 +23,11 @@ public class RayTracerBasic extends RayTracerBase{
      */
     private static final double MIN_CALC_COLOR_K = 0.001;
 
+    public RayTracerBasic setAngle(double angle){
+        this.angle = angle;
+        return this;
+    }
+
     /**
      * Sets the amount of rays.
      * @param amountOfRays The amount of rays.
@@ -177,7 +182,6 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The diffusive of the point.
      */
     private Color calcGlobalEffects(Intersectable.GeoPoint gp, Ray ray, int level, Double3 k) {
-        Color color = Color.BLACK;
         Vector v = ray.getDir();
         //if the level is 0 or the k is smaller than the minimum k
         Vector n = gp.geometry.getNormal(gp.point);
@@ -189,25 +193,36 @@ public class RayTracerBasic extends RayTracerBase{
         Ray refractRay = constructRefractedRay(gp, v, n);
         Color refractColor = Color.BLACK;
 
+        //if the transparency of the geometry is 1
+        //return the color of the point
         Blackboard tarArea = new Blackboard(reflectRay, this.rayNumReflection);
         RayBeam beam = new RayBeam(reflectRay, tarArea);
         List<Ray> rays = beam.getBeam();
 
         for(Ray r : rays){
-            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/rays.size()));
+            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)));
         }
-
+        reflectColor.reduce(rays.size());
+        //if the transparency of the geometry is 1
+        //return the color of the point
+        //else calculate the reflected ray and the refracted ray
+        //and calculate the color of the point with the help of the reflected ray and the refracted ray
         tarArea = new Blackboard(refractRay, this.rayNumRefraction);
         beam = new RayBeam(refractRay, tarArea);
         rays = beam.getBeam();
 
-        for(Ray r : rays){
-            refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)).scale(1.0/rays.size()));
-        }
 
+        //this for loop is for the calculation of the color of the point
+        //with the help of the reflected ray and the refracted ray
+        for(Ray r : rays){
+            refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)));
+        }
+        refractColor.reduce(rays.size());
+
+        //if the transparency of the geometry is 1
+        //return the color of the point
+        //else calculate the reflected ray and the refracted ray
         return reflectColor.add(refractColor);
-       // return calcGlobalEffects(constructReflectedRay(gp, v, n),level, k, material.kR)//
-         //.add(calcGlobalEffects(constructRefractedRay(gp, v, n),level, k, material.kT));
     }
 
     /**

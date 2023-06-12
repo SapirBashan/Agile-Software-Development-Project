@@ -14,9 +14,14 @@ public class Blackboard {
     private Ray basicRay;
     private Vector XDirection;
     private Vector YDirection;
-    private List<Point> pixels = new LinkedList<>();
+    private List<Point> points = new LinkedList<>();
     private int amountOfRays = 1;
 
+    /**
+     * constructor of Blackboard
+     * @param ray the basic ray
+     * @param amountOfRays the amount of rays that will be sent to the target area
+     */
     public Blackboard(Ray ray, int amountOfRays){
         this.basicRay = ray;
         this.amountOfRays = amountOfRays;
@@ -24,11 +29,19 @@ public class Blackboard {
         this.YDirection = (ray.getDir().crossProduct(XDirection)).normalize();
     }
 
+    /**
+     * set the length of the target area
+     * @param length the length of the target area
+     */
     public Blackboard setLength(double length){
         this.length = length;
         return this;
     }
 
+    /**
+     * set the angle of the target area
+     * @param angle the angle of the target area
+     */
     public Blackboard setAngle(double angle){
         if(angle < 0 || angle >= 90)
             throw new IllegalArgumentException("angle must be between 0 to 90 (without 90)");
@@ -36,42 +49,45 @@ public class Blackboard {
         return this;
     }
 
+    /**
+     * set the amount of rays that will be sent to the target area
+     * @param amountOfRays the amount of rays that will be sent to the target area
+     */
     public Blackboard setAmountOfRays(int amountOfRays) {
         this.amountOfRays = amountOfRays;
         return this;
     }
 
-    public List<Point> getPixels(){
+    /**
+     * returns a list of points
+     * the points are the pixels in the target area
+     * @return pixels
+     */
+    public List<Point> getPoints(){
         Point p = basicRay.getP0().add(basicRay.getDir().scale(length));
         if(this.amountOfRays == 1){
-            pixels.add(p);
-            return this.pixels;
+            points.add(p);
+            return this.points;
         }
 
         double XDirectionLength;
         double YDirectionLength;
         double width = Math.tan(this.angle)*this.length;
 
-/*
-        for(int i = 0; i < Math.sqrt(this.amountOfRays - 1) + 1 ; i++){
-            for(int j = 0; j < Math.sqrt(this.amountOfRays - 1) + 1 ; j++) {
-                XDirectionLength = ((Math.random() - 0.5) * 2) * width;//*width;
-                YDirectionLength = (Math.random() - 0.5) * 2 * width;//*width;
-                pixels.add(p.add(XDirection.scale(XDirectionLength + (width * i)))
-                        .add(YDirection.scale(YDirectionLength + (width * j))));
-            }
-        }
-*/
 
-
+        /**
+         * the loop creates random rays in the target area
+         * the target area is a rectangle
+         * the rectangle is defined by the basic ray and the angle
+         */
         for(int i = 0; i < this.amountOfRays; i++) {
             XDirectionLength = ((Math.random() - 0.5)*2) * width;//*width;
             YDirectionLength = ((Math.random() - 0.5)*2) * width;//*width;
-            pixels.add(p.add(XDirection.scale(XDirectionLength))
+            points.add(p.add(XDirection.scale(XDirectionLength))
                     .add(YDirection.scale(YDirectionLength)));
         }
 
-        return pixels;
+        return points;
     }
 
 

@@ -4,6 +4,8 @@ import primitives.*;
 
 import java.util.List;
 import java.util.MissingResourceException;
+import java.util.stream.IntStream;
+
 
 /**
  * Camera class represents a camera in the scene
@@ -19,6 +21,18 @@ public class Camera {
     private double distance;
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
+    private int numOfRays = 1;
+
+
+
+    /**
+     * set the setNumOfRays
+     * @param the number of rays
+     */
+    public Camera setNumOfRays(int numOfRays) {
+        this.numOfRays = numOfRays;
+        return this;
+    }
 
     //ctor
     public Camera(Point p0,Vector vTo, Vector vUp) {
@@ -120,12 +134,26 @@ public class Camera {
             //for each pixel
             //construct a ray through the pixel
             //trace the ray
+
+            /*
             for (int i = 0; i < nX; i++) {
                 for (int j = 0; j < nY; j++) {
                     //trace the ray
                     imageWriter.writePixel(j, i, castRay(nX,nY,j,i));
                 }
-            }
+           / }
+         */
+
+            Pixel.initialize(nX, nY,1);
+            IntStream.range(0, nY).parallel().forEach(i -> {
+                IntStream.range(0, nX).parallel().forEach(j -> {
+                    imageWriter.writePixel(i, j, rayTracer.traceRay(constructRay(nY, nX, j, i)));
+                    Pixel.pixelDone();
+                    Pixel.printPixel();
+                });
+                });
+
+
         }catch (MissingResourceException e){
             throw new UnsupportedOperationException();
         }
@@ -142,17 +170,21 @@ public class Camera {
      * @return the ray through the pixel
      */
     private Color castRay(int nX, int nY, int j, int i){
+        //construct a ray through the pixel
         double wid = Math.atan(((height/nX)/2.0)/distance);
-        Blackboard tarArea = new Blackboard(constructRay(nX, nY, j, i), rayTracer.rayNumAntiAliasing)
-                .setAngle(wid).setLength(distance);
+        // create a target area and beam of rays for the pixel
+        Blackboard tarArea = new Blackboard(constructRay(nX, nY, j, i), rayTracer.rayNumAntiAliasing).setAngle(wid)
+                .setAngle(wid).setLength(distance).setAmountOfRays(this.numOfRays);
         RayBeam beam = new RayBeam(constructRay(nX, nY, j, i), tarArea);
         List<Ray> rays = beam.getBeam();
 
 
         Color color = Color.BLACK;
         for(Ray r : rays){
-            color = color.add(rayTracer.traceRay(r).scale(1.0/rays.size()));
+            color = color.add(rayTracer.traceRay(r));
         }
+
+        color = color.reduce(rays.size());
 
         //trace the ray
         return color;
@@ -178,6 +210,7 @@ public class Camera {
                     imageWriter.writePixel(j, i, color);
             }
         }
+
     }
 
     /**
