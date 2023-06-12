@@ -17,6 +17,9 @@ public abstract class RayTracerBase {
      * The delta for the shadow rays.
      */
     protected int rayNumReflection = 1;
+
+    protected double rayAngle = 0;
+
     protected int rayNumRefraction = 1;
     protected int rayNumAntiAliasing = 1;
 
@@ -43,24 +46,14 @@ public abstract class RayTracerBase {
      */
     abstract protected RayTracerBasic setRayNumAntiAliasing(int amountOfRays);
 
+    abstract protected RayTracerBasic setAngle(double angle);
+
     /**
      * Constructor for RayTracerBase class.
      * @param myScene the scene
      */
     public RayTracerBase(Scene myScene) {
         this.scene = myScene;
-    }
-
-    public int getRayNumReflection() {
-        return rayNumReflection;
-    }
-
-    public int getRayNumRefraction() {
-        return rayNumRefraction;
-    }
-
-    public int getRayNumAntiAliasing() {
-        return rayNumAntiAliasing;
     }
 
     /**
