@@ -27,7 +27,7 @@ public class BloryGlassTests {
                         .setMaterial(new Material().setkD(0.4).setkS(0.3).setShininess(100).setkT(0.3)),
                 new Polygon(new Point(-40,40,0), new Point(-40, 0, 0), new Point(40,0,0),
                         new Point(40,40,0)) //
-                        .setMaterial(new Material().setkD(0.3).setkR(0.2).setkT(0.6).setkS(0.15).setShininess(4))
+                        .setMaterial(new Material().setkD(0.3).setkR(0.2).setkT(0.6).setkS(0.4).setShininess(4))
         );
 
         scene.lights.add( //
@@ -36,7 +36,7 @@ public class BloryGlassTests {
 
         ImageWriter imageWriter = new ImageWriter("bloryGlass", 1000, 1000);
         camera.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene).setRayNumRefraction(10).setRayNumReflection(10)) //
+                .setRayTracer(new RayTracerBasic(scene).setRayNumRefraction(20).setRayNumReflection(20)) //
                 .renderImage() //
                 .writeToImage();
     }
@@ -63,7 +63,7 @@ public class BloryGlassTests {
 
         ImageWriter imageWriter = new ImageWriter("Glass", 1000, 1000);
         camera.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene).setRayNumAntiAliasing(10)) //
+                .setRayTracer(new RayTracerBasic(scene).setRayNumAntiAliasing(300)) //
                 .renderImage() //
                 .writeToImage();
     }
@@ -253,7 +253,7 @@ public class BloryGlassTests {
 
         ImageWriter imageWriter = new ImageWriter("pictureAntiAliasing", 500, 500);
         camera.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene).setRayNumAntiAliasing(300)) //
+                .setRayTracer(new RayTracerBasic(scene).setRayNumAntiAliasing(300).setAngle(0.004)) //
                 .renderImage() //
                 .writeToImage();
     }
