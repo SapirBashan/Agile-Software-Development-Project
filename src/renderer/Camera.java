@@ -167,7 +167,7 @@ public class Camera {
      * @param nY the number of pixels in the y axis
      * @param j the index of the pixel in the x axis
      * @param i the index of the pixel in the y axis
-     * @return the ray through the pixel
+     * @return the ray through the pixe
      */
     private Color castRay(int nX, int nY, int j, int i){
         //construct a ray through the pixel
