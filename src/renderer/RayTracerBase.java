@@ -10,6 +10,8 @@ import primitives.Ray;
 public abstract class RayTracerBase {
     protected Scene scene;
 
+    protected double angle = 0;
+
 
     /**
      * The delta for the shadow rays.
@@ -21,11 +23,13 @@ public abstract class RayTracerBase {
     protected int rayNumRefraction = 1;
     protected int rayNumAntiAliasing = 1;
 
-    /**
-     * Sets the amount of rays.
-     * @param amountOfRays The amount of rays.
-     * @return The RayTracerBasic object.
-     */
+    abstract protected RayTracerBasic setAngle(double angle);
+
+        /**
+         * Sets the amount of rays.
+         * @param amountOfRays The amount of rays.
+         * @return The RayTracerBasic object.
+         */
     abstract protected RayTracerBasic setRayNumReflection(int amountOfRays);
 
     /**
