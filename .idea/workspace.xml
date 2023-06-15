@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="stage 8 - finished">
-      <change afterPath="$PROJECT_DIR$/src/renderer/Pixel.java" afterDir="false" />
+    <list default="true" id="2fb5d66a-42c6-44da-9592-e21b9330405b" name="Changes" comment="check thread merge 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Unittest/renderer/BloryGlassTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Unittest/renderer/BloryGlassTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Blackboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Blackboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BloryGlassTests.Glass">
+  <component name="RunManager" selected="JUnit.BloryGlassTests.bloryGlass">
     <configuration name="BloryGlassTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3368_0044" />
       <extension name="coverage">
@@ -178,10 +178,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BloryGlassTests.bloryGlass" />
+        <item itemvalue="JUnit.BloryGlassTests.pictureForBonus" />
         <item itemvalue="JUnit.BloryGlassTests.Glass" />
         <item itemvalue="JUnit.BloryGlassTests.Glass2" />
-        <item itemvalue="JUnit.BloryGlassTests.pictureForBonus" />
-        <item itemvalue="JUnit.BloryGlassTests.bloryGlass" />
         <item itemvalue="JUnit.BloryGlassTests" />
       </list>
     </recent_temporary>

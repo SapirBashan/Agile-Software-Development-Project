@@ -199,6 +199,7 @@ public class RayTracerBasic extends RayTracerBase{
         List<Ray> rays = beam.getBeam();
 
         for(Ray r : rays){
+
             reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/rays.size()));
         }
 

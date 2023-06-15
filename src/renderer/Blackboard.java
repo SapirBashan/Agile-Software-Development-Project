@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Blackboard {
 
-    private double length = 700;
-    private double angle = 0.04;
+    private double length = 500;
+    private double angle = 0.004;
     private Ray basicRay;
     private Vector XDirection;
     private Vector YDirection;

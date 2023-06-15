@@ -17,17 +17,19 @@ public class BloryGlassTests {
     private Scene scene = new Scene("Test scene");
 
     /** Produce a picture of a sphere lighted by a spot light */
+    /** Produce a picture of a sphere lighted by a spot light */
     @Test
     public void bloryGlass() {
         Camera camera = new Camera(new Point(0, -10, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setVPSize(150, 150).setVPDistance(1000);
 
+
         scene.geometries.add( //
-                new Sphere(10, new Point(0,0, -400)).setEmission(new Color(BLUE)) //
-                        .setMaterial(new Material().setkD(0.4).setkS(0.3).setShininess(100).setkT(0.3)),
+                new Sphere(20, new Point(0,0, -400)).setEmission(new Color(blue)) //
+                        .setMaterial(new Material().setkD(0.4).setkS(1).setShininess(100).setkT(0.3)),
                 new Polygon(new Point(-40,40,0), new Point(-40, 0, 0), new Point(40,0,0),
                         new Point(40,40,0)) //
-                        .setMaterial(new Material().setkD(0.3).setkR(0.2).setkT(0.6).setkS(0.4).setShininess(4))
+                        .setMaterial(new Material().setkD(0.2).setkR(1).setkT(0.4).setkS(0.5).setShininess(20))
         );
 
         scene.lights.add( //
@@ -36,10 +38,11 @@ public class BloryGlassTests {
 
         ImageWriter imageWriter = new ImageWriter("bloryGlass", 1000, 1000);
         camera.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene).setRayNumRefraction(20).setRayNumReflection(20)) //
-                .renderImage() //
+                .setRayTracer(new RayTracerBasic(scene).setRayNumRefraction(10).setRayNumReflection(10).setAngle(0.004))
+                .renderImage()
                 .writeToImage();
     }
+
 
 
     /** Produce a picture of a sphere lighted by a spot light */
