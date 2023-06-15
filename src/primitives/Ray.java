@@ -1,7 +1,9 @@
 package primitives;
 
 import geometries.Intersectable.GeoPoint;
+import renderer.Blackboard;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -110,6 +112,27 @@ public class Ray {
         }catch (Exception e){
             return this.p0;
         }
+    }
+
+    public List<Ray> rayBeam(Blackboard tarArea, double amountOfRays){
+        if(amountOfRays == 1){
+            return List.of(this);
+        }
+
+        double interval = tarArea.getSize()/amountOfRays;
+        Vector XD = tarArea.getXDirection();
+        Vector YD = tarArea.getYDirection();
+        Point p = tarArea.getO().add(tarArea.getXDirection().scale(-1*tarArea.getSize()/2.0))
+                .add(tarArea.getYDirection().scale(tarArea.getSize()/2.0));
+        List<Ray> beam = new LinkedList<>();
+        for(int i = 0; i < amountOfRays; i++){
+            for(int j = 0; j < amountOfRays; j++){
+                beam.add(new Ray(this.p0,p.add(XD.scale((i+0.00001)*interval))
+                        .add(YD.scale((j-0.00001)*interval)).subtract(this.p0)));
+            }
+        }
+
+        return beam;
     }
 
     /**

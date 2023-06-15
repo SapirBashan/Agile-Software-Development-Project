@@ -4,7 +4,6 @@ import primitives.*;
 
 import java.util.List;
 import java.util.MissingResourceException;
-import java.util.stream.IntStream;
 
 /**
  * Camera class represents a camera in the scene
@@ -20,6 +19,13 @@ public class Camera {
     private double distance;
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
+
+    private int rayNumAntiAliasing = 1;
+
+    public Camera setRayNumAntiAliasing(int rayNumAntiAliasing){
+        this.rayNumAntiAliasing = rayNumAntiAliasing;
+        return this;
+    }
 
     //ctor
     public Camera(Point p0,Vector vTo, Vector vUp) {
@@ -62,6 +68,8 @@ public class Camera {
     public double getDistance() {
         return distance;
     }
+
+
     /**
      * set the view plane size
      * @param width the width of the view plane
@@ -121,16 +129,16 @@ public class Camera {
             //for each pixel
             //construct a ray through the pixel
             //trace the ray
-           /*
+
             for (int i = 0; i < nX; i++) {
                 for (int j = 0; j < nY; j++) {
                     //trace the ray
                     imageWriter.writePixel(j, i, castRay(nX,nY,j,i));
                 }
             }
-            */
 
 
+/*
             Pixel.initialize(nY, nX, 1);
             IntStream.range(0, nY).parallel().forEach(i -> {
                 IntStream.range(0, nX).parallel().forEach(j -> {
@@ -139,6 +147,8 @@ public class Camera {
                     Pixel.printPixel();
                 });
             });
+
+ */
 
 
         }catch (MissingResourceException e){
@@ -158,10 +168,10 @@ public class Camera {
      */
     private Color castRay(int nX, int nY, int j, int i){
         double wid = Math.atan(((height/nX)/2.0)/distance);
-        Blackboard tarArea = new Blackboard(constructRay(nX, nY, j, i), rayTracer.rayNumAntiAliasing)
+        Ray ray = constructRay(nX, nY, j, i);
+        Blackboard tarArea = new Blackboard(ray)
                 .setAngle(wid).setLength(distance);
-        RayBeam beam = new RayBeam(constructRay(nX, nY, j, i), tarArea);
-        List<Ray> rays = beam.getBeam();
+        List<Ray> rays = ray.rayBeam(tarArea, this.rayNumAntiAliasing);
 
 
         Color color = Color.BLACK;

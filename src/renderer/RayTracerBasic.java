@@ -49,16 +49,6 @@ public class RayTracerBasic extends RayTracerBase{
     }
 
     /**
-     * Sets the amount of rays.
-     * @param amountOfRays The amount of rays.
-     * @return The RayTracerBasic object.
-     */
-    public RayTracerBasic setRayNumAntiAliasing(int amountOfRays) {
-        this.rayNumAntiAliasing = amountOfRays;
-        return this;
-    }
-
-    /**
      * Constructor for RayTracerBase class.
      * @param scene The scene.
      */
@@ -194,21 +184,19 @@ public class RayTracerBasic extends RayTracerBase{
         Ray refractRay = constructRefractedRay(gp, v, n);
         Color refractColor = Color.BLACK;
 
-        Blackboard tarArea = new Blackboard(reflectRay, this.rayNumReflection);
-        RayBeam beam = new RayBeam(reflectRay, tarArea);
-        List<Ray> rays = beam.getBeam();
 
-        for(Ray r : rays){
-
-            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/rays.size()));
-        }
-
-        tarArea = new Blackboard(refractRay, this.rayNumRefraction);
-        beam = new RayBeam(refractRay, tarArea);
-        rays = beam.getBeam();
+        Blackboard tarArea = new Blackboard(refractRay);
+        List<Ray> rays = refractRay.rayBeam(tarArea, this.rayNumRefraction);
 
         for(Ray r : rays){
             refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)).scale(1.0/rays.size()));
+        }
+
+        Blackboard tarAreaR = new Blackboard(reflectRay);
+        List<Ray> raysR = reflectRay.rayBeam(tarAreaR, this.rayNumReflection);
+
+        for(Ray r : raysR){
+            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/raysR.size()));
         }
 
         return reflectColor.add(refractColor);

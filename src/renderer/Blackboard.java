@@ -4,28 +4,26 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Blackboard {
 
-    private double length = 500;
-    private double angle = 0.004;
-    private Ray basicRay;
+    private Point o;
     private Vector XDirection;
     private Vector YDirection;
-    private List<Point> pixels = new LinkedList<>();
-    private int amountOfRays = 1;
 
-    public Blackboard(Ray ray, int amountOfRays) {
-        this.basicRay = ray;
-        this.amountOfRays = amountOfRays;
+    private double size;
+    private double angle = 0.004;
+    private double length = 700;
+
+    public Blackboard(Ray ray) {
+        this.o = ray.getP0();
         this.XDirection = new Vector(ray.getDir().getY() * -1, ray.getDir().getX(), 0).normalize();
         this.YDirection = (ray.getDir().crossProduct(XDirection)).normalize();
+        calcSize();
     }
 
     public Blackboard setLength(double length) {
         this.length = length;
+        calcSize();
         return this;
     }
 
@@ -33,14 +31,31 @@ public class Blackboard {
         if (angle < 0 || angle >= 90)
             throw new IllegalArgumentException("angle must be between 0 to 90 (without 90)");
         this.angle = angle;
+        calcSize();
         return this;
     }
 
-    public Blackboard setAmountOfRays(int amountOfRays) {
-        this.amountOfRays = amountOfRays;
-        return this;
+    public double getSize() {
+        return size;
     }
 
+    public Point getO() {
+        return o;
+    }
+
+    public Vector getXDirection() {
+        return XDirection;
+    }
+
+    public Vector getYDirection() {
+        return YDirection;
+    }
+
+    public void calcSize(){
+        this.size = Math.tan(this.angle) * this.length * 2;
+    }
+
+    /*
     public List<Point> getPixels() {
         Point p = basicRay.getP0().add(basicRay.getDir().scale(length));
         if (this.amountOfRays == 1) {
@@ -66,4 +81,6 @@ public class Blackboard {
 
         return pixels;
     }
+
+     */
 }

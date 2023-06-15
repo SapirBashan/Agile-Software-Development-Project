@@ -1,4 +1,4 @@
-package primitives;
+/*package primitives;
 
 import renderer.Blackboard;
 
@@ -15,7 +15,7 @@ public class RayBeam{
      *
      * @param basicRay
      * @param targetArea
-     */
+
     public RayBeam(Ray basicRay,Blackboard targetArea) {
         this.targetArea = targetArea;
         this.basicRay = basicRay;
@@ -26,23 +26,24 @@ public class RayBeam{
      * returns a list of rays
      *
      * @return beam
-     */
+
     public List<Ray> getBeam() {
         return beam;
     }
 
     /**
      * create the beam of rays that will be sent to the target area
-     */
+
     private void createBeam(){
         if(this.targetArea == null)
             throw new IllegalArgumentException("the target area is not exist");
 
         beam = new LinkedList<>();
 
-        List<Point> tarArea = this.targetArea.getPoints();
+        List<Point> tarArea = this.targetArea.getPixels();
         for (Point p: tarArea) {
             beam.add(new Ray(basicRay.getP0(),p.subtract(basicRay.getP0())));
         }
     }
 }
+*/
