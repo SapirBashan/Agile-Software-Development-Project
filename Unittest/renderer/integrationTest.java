@@ -20,6 +20,7 @@ public class integrationTest {
     //construct a camera
     Camera camera = new Camera(p0, vTo, vUp).setVPSize(3, 3).setVPDistance(1);
 
+    /*
     /**
      * count the number of intersections of a ray with a geometry
      * @param entity the geometry

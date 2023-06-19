@@ -4,6 +4,7 @@ import primitives.*;
 
 import java.util.List;
 import java.util.MissingResourceException;
+import java.util.stream.IntStream;
 
 /**
  * Camera class represents a camera in the scene
@@ -20,6 +21,7 @@ public class Camera {
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
 
+    private Ray rayTo;
     private int rayNumAntiAliasing = 1;
 
     public Camera setRayNumAntiAliasing(int rayNumAntiAliasing){
@@ -38,6 +40,7 @@ public class Camera {
             this.vUp = vUp.normalize();
             vRight = vTo.crossProduct(vUp).normalize();
             this.p0 = p0;
+            this.rayTo = new Ray(this.p0,this.vTo);
         }
     }
 
@@ -130,6 +133,7 @@ public class Camera {
             //construct a ray through the pixel
             //trace the ray
 
+            /*
             for (int i = 0; i < nX; i++) {
                 for (int j = 0; j < nY; j++) {
                     //trace the ray
@@ -137,8 +141,9 @@ public class Camera {
                 }
             }
 
+             */
 
-/*
+
             Pixel.initialize(nY, nX, 1);
             IntStream.range(0, nY).parallel().forEach(i -> {
                 IntStream.range(0, nX).parallel().forEach(j -> {
@@ -147,9 +152,6 @@ public class Camera {
                     Pixel.printPixel();
                 });
             });
-
- */
-
 
         }catch (MissingResourceException e){
             throw new UnsupportedOperationException();
@@ -167,21 +169,24 @@ public class Camera {
      * @return the ray through the pixel
      */
     private Color castRay(int nX, int nY, int j, int i){
-        double wid = Math.atan(((height/nX)/2.0)/distance);
         Ray ray = constructRay(nX, nY, j, i);
-        Blackboard tarArea = new Blackboard(ray)
-                .setAngle(wid).setLength(distance);
-        List<Ray> rays = ray.rayBeam(tarArea, this.rayNumAntiAliasing);
+        Blackboard tarArea = new Blackboard(rayTo).setAmount(this.rayNumAntiAliasing)
+                .setSize(height/((double)(nX))).setO(this.getPIJ(nX,nY,j,i));
 
+        List<Ray> rays = ray.rayBeam(tarArea);
 
         Color color = Color.BLACK;
         for(Ray r : rays){
-            color = color.add(rayTracer.traceRay(r).scale(1.0/rays.size()));
+            color = color.add(rayTracer.traceRay(r));
         }
+        color = color.reduce(rays.size());
 
         //trace the ray
         return color;
+
+        //return superSampling(tarArea, ray, this.rayNumAntiAliasing);
     }
+
 
     /**
      * print a grid on the view plane
@@ -225,7 +230,13 @@ public class Camera {
      * @return the ray through the pixel
      */
     public Ray constructRay(int nX, int nY, int j, int i) {
-        //image center
+        Point pIJ = this.getPIJ(nX,nY,j,i);
+        //ray direction
+        Vector vIJ = pIJ.subtract(p0);
+        return new Ray(p0, vIJ);
+    }
+
+    private Point getPIJ(int nX, int nY, int j, int i){
         Point pC = p0.add(vTo.scale(distance));
         //ratio (pixel width and height)
         double Ry = height / nY;
@@ -239,8 +250,7 @@ public class Camera {
             pIJ = pIJ.add(vRight.scale(xJ));
         if (!Util.isZero(yI))
             pIJ = pIJ.add(vUp.scale(yI));
-        //ray direction
-        Vector vIJ = pIJ.subtract(p0);
-        return new Ray(p0, vIJ);
+
+        return pIJ;
     }
 }

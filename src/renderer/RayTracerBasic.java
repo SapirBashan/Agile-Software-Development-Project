@@ -172,7 +172,6 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The diffusive of the point.
      */
     private Color calcGlobalEffects(Intersectable.GeoPoint gp, Ray ray, int level, Double3 k) {
-        Color color = Color.BLACK;
         Vector v = ray.getDir();
         //if the level is 0 or the k is smaller than the minimum k
         Vector n = gp.geometry.getNormal(gp.point);
@@ -184,24 +183,106 @@ public class RayTracerBasic extends RayTracerBase{
         Ray refractRay = constructRefractedRay(gp, v, n);
         Color refractColor = Color.BLACK;
 
+        List<Ray> rays = createRays(refractRay, this.rayNumRefraction);
+        Color[] colors = new Color[rays.size()];
+        for(Color c : colors){
+            c = null;
+        }
 
-        Blackboard tarArea = new Blackboard(refractRay);
-        List<Ray> rays = refractRay.rayBeam(tarArea, this.rayNumRefraction);
+        refractColor = superSampling(rays, colors,1,0,rayNumRefraction-1,
+                (rayNumRefraction-1)*rayNumRefraction, rayNumRefraction*rayNumRefraction - 1,
+                material.kT,level,k);
+
+        rays = createRays(reflectRay,this.rayNumReflection);
+        colors = new Color[rays.size()];
+        for(Color c : colors){
+            c = null;
+        }
+
+        reflectColor = superSampling(rays, colors,1,0,rayNumReflection-1,
+                (rayNumReflection-1)*rayNumReflection, rayNumReflection*rayNumReflection - 1,
+                material.kR,level,k);
+        /*
+        for(Ray r : rays){
+            refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)));
+        }
+        refractColor = refractColor.reduce(rays.size());
+
+        rays = createRays(reflectRay,this.rayNumReflection);
 
         for(Ray r : rays){
-            refractColor = refractColor.add((calcGlobalEffects(r,level, k, material.kT)).scale(1.0/rays.size()));
+            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)));
         }
+        reflectColor = reflectColor.reduce(rays.size());
 
-        Blackboard tarAreaR = new Blackboard(reflectRay);
-        List<Ray> raysR = reflectRay.rayBeam(tarAreaR, this.rayNumReflection);
+         */
 
-        for(Ray r : raysR){
-            reflectColor = reflectColor.add((calcGlobalEffects(r,level, k, material.kR)).scale(1.0/raysR.size()));
-        }
 
         return reflectColor.add(refractColor);
-       // return calcGlobalEffects(constructReflectedRay(gp, v, n),level, k, material.kR)//
-         //.add(calcGlobalEffects(constructRefractedRay(gp, v, n),level, k, material.kT));
+    }
+
+    private List<Ray> createRays(Ray ray, int amount){
+        Blackboard tarArea = new Blackboard(ray).setAmount(amount);
+        tarArea.setSize(Math.tan(this.angle)*tarArea.getLength());
+        return ray.rayBeam(tarArea);
+    }
+
+    private Color superSampling(List<Ray> rays, Color[] colors, int depth, int x, int y, int z, int w,
+                                Double3 kRT, int level, Double3 k){
+        Color color = Color.BLACK;
+        depth = depth * 2;
+
+        int moveX = (int)((Math.sqrt(rays.size())-1) / depth);
+        int moveY = (int)(moveX * (Math.sqrt(rays.size())));
+
+        if(colors[x] == null){
+            colors[x] = calcGlobalEffects(rays.get(x),level, k, kRT);
+        }
+        if(colors[y] == null){
+            colors[y] = calcGlobalEffects(rays.get(y),level, k, kRT);
+        }
+        if(colors[z] == null){
+            colors[z] = calcGlobalEffects(rays.get(z),level, k, kRT);
+        }
+        if(colors[w] == null){
+            colors[w] = calcGlobalEffects(rays.get(w),level, k, kRT);
+        }
+
+        boolean end = !(depth >= Math.sqrt(rays.size()) - 1);
+
+        if(end && (colors[x] != colors[y] || colors[x] != colors[z])){
+            color = color.add(superSampling(rays, colors, depth, x, x + moveX, x+moveY, x + moveX + moveY,
+                            kRT, level, k).scale(0.25));
+        }
+        else{
+            color = color.add(colors[x].scale(0.25));
+        }
+
+        if(end && (colors[y] != colors[x] || colors[y] != colors[w])){
+            color = color.add(superSampling(rays, colors, depth, x + moveX, y, x + moveX+moveY, y+moveY,
+                    kRT, level, k).scale(0.25));
+        }
+        else{
+            color = color.add(colors[y].scale(0.25));
+        }
+
+        if(end && (colors[z] != colors[x] || colors[z] != colors[w])){
+            color = color.add(superSampling(rays, colors, depth, x+moveY, x + moveY + moveX, z, z + moveX,
+                    kRT, level, k).scale(0.25));
+        }
+        else{
+            color = color.add(colors[z].scale(0.25));
+        }
+
+        if(end && (colors[w] != colors[y] || colors[w] != colors[z])){
+            color = color.add(superSampling(rays, colors, depth, x+moveY + moveX, x + moveY + 2*moveX, x + 2*moveY+moveX, w,
+                    kRT, level, k).scale(0.25));
+        }
+        else{
+            color = color.add(colors[w].scale(0.25));
+        }
+
+        return color;
     }
 
     /**

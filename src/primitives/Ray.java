@@ -114,25 +114,15 @@ public class Ray {
         }
     }
 
-    public List<Ray> rayBeam(Blackboard tarArea, double amountOfRays){
-        if(amountOfRays == 1){
-            return List.of(this);
+    public List<Ray> rayBeam(Blackboard tarArea){
+
+        List<Ray> rays = new LinkedList<>();
+
+        for(Point p : tarArea.getPoints()){
+            rays.add(new Ray(this.p0, p.subtract(this.p0)));
         }
 
-        double interval = tarArea.getSize()/amountOfRays;
-        Vector XD = tarArea.getXDirection();
-        Vector YD = tarArea.getYDirection();
-        Point p = tarArea.getO().add(tarArea.getXDirection().scale(-1*tarArea.getSize()/2.0))
-                .add(tarArea.getYDirection().scale(tarArea.getSize()/2.0));
-        List<Ray> beam = new LinkedList<>();
-        for(int i = 0; i < amountOfRays; i++){
-            for(int j = 0; j < amountOfRays; j++){
-                beam.add(new Ray(this.p0,p.add(XD.scale((i+0.00001)*interval))
-                        .add(YD.scale((j-0.00001)*interval)).subtract(this.p0)));
-            }
-        }
-
-        return beam;
+        return rays;
     }
 
     /**

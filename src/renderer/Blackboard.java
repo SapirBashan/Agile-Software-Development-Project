@@ -4,43 +4,37 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Blackboard {
 
     private Point o;
     private Vector XDirection;
     private Vector YDirection;
-
-    private double size;
-    private double angle = 0.004;
+    private double size = 1;
     private double length = 700;
+    private int amount = 1;
 
     public Blackboard(Ray ray) {
-        this.o = ray.getP0();
-        this.XDirection = new Vector(ray.getDir().getY() * -1, ray.getDir().getX(), 0).normalize();
+        this.o = ray.getP0().add(ray.getDir().scale(length));
+        try {
+
+            this.XDirection = new Vector(ray.getDir().getY() * -1, ray.getDir().getX(), 0).normalize();
+        }
+        catch (IllegalArgumentException e) {
+            this.XDirection = new Vector(ray.getDir().getZ(), 0, 0).normalize();
+        }
         this.YDirection = (ray.getDir().crossProduct(XDirection)).normalize();
-        calcSize();
     }
 
-    public Blackboard setLength(double length) {
-        this.length = length;
-        calcSize();
-        return this;
-    }
-
-    public Blackboard setAngle(double angle) {
-        if (angle < 0 || angle >= 90)
-            throw new IllegalArgumentException("angle must be between 0 to 90 (without 90)");
-        this.angle = angle;
-        calcSize();
+    public Blackboard setSize(double size){
+        this.size = size;
         return this;
     }
 
     public double getSize() {
         return size;
-    }
-
-    public Point getO() {
-        return o;
     }
 
     public Vector getXDirection() {
@@ -51,8 +45,45 @@ public class Blackboard {
         return YDirection;
     }
 
-    public void calcSize(){
-        this.size = Math.tan(this.angle) * this.length * 2;
+    public Blackboard setAmount(int amount){
+        this.amount = amount;
+        return this;
+    }
+
+    public Point getO(){
+        return this.o;
+    }
+
+    public Blackboard setO(Point o){
+        this.o = o;
+        return this;
+    }
+
+    public double getLength(){
+        return this.length;
+    }
+
+    public List<Point> getPoints(){
+        if(amount == 1){
+            return List.of(this.o);
+        }
+
+        Point p = o.add(XDirection.scale(-1*size).add(YDirection.scale(size)));
+        double XLen, YLen;
+        double interval = this.size / amount;
+
+        List<Point> points = new LinkedList<>();
+
+        for(int i = 0; i < amount; i++){
+            for(int j = 0; j < amount; j++){
+                XLen = (j != 0) ? j*interval : 0.0000001;
+                YLen = (i!=0) ? -1*i * interval : 0.0000001;
+                points.add(p.add(XDirection.scale(XLen))
+                        .add(YDirection.scale(-1*YLen)));
+            }
+        }
+
+        return points;
     }
 
     /*
