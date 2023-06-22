@@ -78,7 +78,7 @@ public class Blackboard {
         for(int i = 0; i < amount; i++){
             for(int j = 0; j < amount; j++){
                 XLen = (j != 0) ? j*interval : 0.0000001;
-                YLen = (i!=0) ? -1*i * interval : 0.0000001;
+                YLen = (i!=0) ? i * interval : 0.0000001;
                 points.add(p.add(XDirection.scale(XLen))
                         .add(YDirection.scale(-1*YLen)));
             }

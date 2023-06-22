@@ -4,7 +4,6 @@ import primitives.*;
 
 import java.util.List;
 import java.util.MissingResourceException;
-import java.util.stream.IntStream;
 
 /**
  * Camera class represents a camera in the scene
@@ -133,16 +132,16 @@ public class Camera {
             //construct a ray through the pixel
             //trace the ray
 
-            /*
+
             for (int i = 0; i < nX; i++) {
                 for (int j = 0; j < nY; j++) {
                     //trace the ray
                     imageWriter.writePixel(j, i, castRay(nX,nY,j,i));
                 }
             }
-             */
 
 
+/*
             Pixel.initialize(nY, nX, 1);
             IntStream.range(0, nY).parallel().forEach(i -> {
                 IntStream.range(0, nX).parallel().forEach(j -> {
@@ -151,6 +150,8 @@ public class Camera {
                     Pixel.printPixel();
                 });
             });
+
+ */
 
         }catch (MissingResourceException e){
             throw new UnsupportedOperationException();

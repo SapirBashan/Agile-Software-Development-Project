@@ -104,4 +104,11 @@ public class Color {
 
     @Override
     public String toString() { return "rgb:" + rgb; }
+
+    public boolean similarColor(Color color){
+        double n = 10;
+        return (Math.abs(this.getColor().getBlue() - color.getColor().getBlue()) < n &&
+                Math.abs(this.getColor().getRed() - color.getColor().getRed()) < n &&
+                Math.abs(this.getColor().getGreen() - color.getColor().getGreen()) < n);
+    }
 }
