@@ -16,6 +16,7 @@ public class Blackboard {
     private double length = 700;
     private int amount = 1;
 
+
     public Blackboard(Ray ray) {
         this.o = ray.getP0().add(ray.getDir().scale(length));
         try {

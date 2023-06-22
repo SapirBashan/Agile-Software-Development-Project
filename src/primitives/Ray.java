@@ -114,6 +114,10 @@ public class Ray {
         }
     }
 
+    /**
+     * Returns the hashcode of this ray.
+     * @return the hashcode of this ray
+     */
     public List<Ray> rayBeam(Blackboard tarArea){
 
         List<Ray> rays = new LinkedList<>();

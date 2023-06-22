@@ -140,7 +140,6 @@ public class Camera {
                     imageWriter.writePixel(j, i, castRay(nX,nY,j,i));
                 }
             }
-
              */
 
 

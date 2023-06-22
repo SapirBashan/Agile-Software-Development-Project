@@ -227,14 +227,24 @@ public class RayTracerBasic extends RayTracerBase{
         return ray.rayBeam(tarArea);
     }
 
+    /**
+     * calculates the global effects of the point with the help of the
+     *
+     * @param level The material of the geometry.
+     * @param  depth dot product of the normal and the light source.
+     * @return The diffusive of the point.
+     */
     private Color superSampling(List<Ray> rays, Color[] colors, int depth, int x, int y, int z, int w,
                                 Double3 kRT, int level, Double3 k){
         Color color = Color.BLACK;
         depth = depth * 2;
 
+        //this calulates the amount of pixels that the point will be divided into
         int moveX = (int)((Math.sqrt(rays.size())-1) / depth);
+        //this calulates the amount of pixels that the point will be divided into
         int moveY = (int)(moveX * (Math.sqrt(rays.size())));
 
+        //this is the base case of the recursion
         if(colors[x] == null){
             colors[x] = calcGlobalEffects(rays.get(x),level, k, kRT);
         }
@@ -248,8 +258,10 @@ public class RayTracerBasic extends RayTracerBase{
             colors[w] = calcGlobalEffects(rays.get(w),level, k, kRT);
         }
 
+        //this is the base case of the recursion
         boolean end = !(depth >= Math.sqrt(rays.size()) - 1);
 
+        //this is the recursive call of the function that calculates the color of the point with the help of the super sampling
         if(end && (colors[x] != colors[y] || colors[x] != colors[z])){
             color = color.add(superSampling(rays, colors, depth, x, x + moveX, x+moveY, x + moveX + moveY,
                             kRT, level, k).scale(0.25));
@@ -258,6 +270,7 @@ public class RayTracerBasic extends RayTracerBase{
             color = color.add(colors[x].scale(0.25));
         }
 
+        //this is the base case of the recursion
         if(end && (colors[y] != colors[x] || colors[y] != colors[w])){
             color = color.add(superSampling(rays, colors, depth, x + moveX, y, x + moveX+moveY, y+moveY,
                     kRT, level, k).scale(0.25));
@@ -266,6 +279,7 @@ public class RayTracerBasic extends RayTracerBase{
             color = color.add(colors[y].scale(0.25));
         }
 
+        //this is the base case of the recursion
         if(end && (colors[z] != colors[x] || colors[z] != colors[w])){
             color = color.add(superSampling(rays, colors, depth, x+moveY, x + moveY + moveX, z, z + moveX,
                     kRT, level, k).scale(0.25));
@@ -274,6 +288,7 @@ public class RayTracerBasic extends RayTracerBase{
             color = color.add(colors[z].scale(0.25));
         }
 
+        //this is the base case of the recursion
         if(end && (colors[w] != colors[y] || colors[w] != colors[z])){
             color = color.add(superSampling(rays, colors, depth, x+moveY + moveX, x + moveY + 2*moveX, x + 2*moveY+moveX, w,
                     kRT, level, k).scale(0.25));
